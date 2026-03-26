@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmallBiz Recon — SBA EIDL Help</title>
+  <meta name="description" content="Has the SBA sent your COVID EIDL to the Treasury without notice? SmallBiz Recon may be able to help get your issue resolved." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#f4f1eb',
+            'cream-dark': '#eae5db',
+            olive: {
+              900: '#3a4a38',
+              800: '#4a5c47',
+              700: '#566a52',
+              600: '#647a60',
+            },
+            gold: {
+              100: '#f5e6c4',
+              200: '#e8d5a8',
+              300: '#d4b96e',
+              400: '#c5a44e',
+              500: '#b08d3a',
+            },
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* Grain overlay */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px;
+    }
+
+    /* Spring easing */
+    .spring { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; }
+
+    /* Layered shadows */
+    .shadow-elevated {
+      box-shadow:
+        0 1px 2px rgba(58, 74, 56, 0.06),
+        0 4px 12px rgba(58, 74, 56, 0.08),
+        0 12px 32px rgba(58, 74, 56, 0.06);
+    }
+    .shadow-floating {
+      box-shadow:
+        0 2px 4px rgba(58, 74, 56, 0.04),
+        0 8px 24px rgba(58, 74, 56, 0.1),
+        0 24px 48px rgba(58, 74, 56, 0.08);
+    }
+
+    /* Realistic iPhone mockup */
+    .iphone-frame {
+      position: relative;
+      width: 290px;
+      height: 590px;
+      background: #0a0a0a;
+      border-radius: 52px;
+      padding: 14px;
+      box-shadow:
+        inset 0 0 0 2px #2a2a2a,
+        inset 0 0 0 4px #1a1a1a,
+        0 20px 60px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(255,255,255,0.05);
+    }
+    /* Dynamic Island */
+    .iphone-frame::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 34px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 20;
+    }
+    /* Side button (right) */
+    .iphone-frame::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 140px;
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      border-radius: 0 2px 2px 0;
+    }
+    .iphone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      background: #f0ebe3;
+    }
+    .iphone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Realistic hand holding phone */
+    .hand-container {
+      position: relative;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    }
+    .hand-svg {
+      position: absolute;
+      z-index: 5;
+    }
+
+    /* Floating animation */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+    .float-slow { animation: floatSlow 6s ease-in-out infinite; }
+
+    /* Focus visible */
+    :focus-visible {
+      outline: 3px solid #4a5c47;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Decorative shapes */
+    .shape-tan {
+      background: linear-gradient(135deg, #d4b96e, #c5a44e);
+    }
+    .shape-olive {
+      background: linear-gradient(135deg, #4a5c47, #3a4a38);
+    }
+
+    /* Smooth scroll anchor offset */
+    [id] { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body class="bg-cream text-olive-900 antialiased overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-olive-900/5">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 spring hover:scale-[1.02] active:scale-[0.98]">
+        <img src="project/public/smallbizrecon_logo_transparent.png" alt="SmallBiz Recon" class="h-12 w-12 object-contain" />
+        <span class="font-heading font-bold text-xl tracking-tight text-olive-900">SmallBiz Recon</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#how-it-works" class="text-sm font-medium text-olive-800 hover:text-olive-900 spring">How It Works</a>
+        <a href="#services" class="text-sm font-medium text-olive-800 hover:text-olive-900 spring">Services</a>
+        <a href="#testimonials" class="text-sm font-medium text-olive-800 hover:text-olive-900 spring">Results</a>
+        <a href="#cta-bottom" class="inline-flex items-center px-5 py-2.5 bg-olive-900 text-cream text-sm font-semibold rounded-lg spring hover:scale-105 hover:bg-olive-800 active:scale-95 focus-visible:ring-2 focus-visible:ring-olive-900 focus-visible:ring-offset-2 focus-visible:ring-offset-cream">
+          Free Consultation
+        </a>
+      </div>
+      <!-- Mobile hamburger -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-olive-900 spring hover:scale-110 active:scale-90" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 bg-cream/95 backdrop-blur-md border-t border-olive-900/5">
+      <a href="#how-it-works" class="block py-2 text-sm font-medium text-olive-800">How It Works</a>
+      <a href="#services" class="block py-2 text-sm font-medium text-olive-800">Services</a>
+      <a href="#testimonials" class="block py-2 text-sm font-medium text-olive-800">Results</a>
+      <a href="#cta-bottom" class="block mt-2 text-center px-5 py-2.5 bg-olive-900 text-cream text-sm font-semibold rounded-lg">Free Consultation</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO SECTION — matches reference exactly
+       ══════════════════════════════════════════════════════════ -->
+  <section class="relative pt-28 pb-16 md:pt-36 md:pb-24 grain overflow-hidden">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cream-dark/60 to-transparent"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-8 items-center">
+      <!-- Left: Copy + Form -->
+      <div class="max-w-xl">
+        <h1 class="font-heading font-900 text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] leading-[1.08] tracking-[-0.03em] text-olive-900 mb-6">
+          HAS THE SBA SENT YOUR COVID EIDL TO THE TREASURY WITHOUT NOTICE?
+        </h1>
+        <p class="text-lg sm:text-xl text-olive-700 leading-relaxed mb-8 font-body">
+          SmallBiz Recon may be able to help get your issue resolved!!
+        </p>
+        <h2 class="font-heading font-bold text-xl sm:text-2xl text-olive-900 mb-5">
+          Sign up for a FREE consultation, today!!
+        </h2>
+        <!-- ═══ STEP 1: Email Entry ═══ -->
+        <div id="step-email">
+          <form id="heroForm" class="mb-4" onsubmit="event.preventDefault(); handleEmailSubmit();">
+            <input
+              type="email"
+              id="userEmail"
+              placeholder="Email"
+              required
+              class="w-full max-w-md px-5 py-3.5 bg-white border border-olive-900/15 rounded-lg text-olive-900 placeholder:text-olive-600/50 focus:outline-none focus:ring-2 focus:ring-olive-700 focus:border-olive-700 spring font-body mb-3"
+            />
+            <div class="flex flex-wrap items-center gap-3">
+              <p class="text-xs text-olive-600/70 leading-relaxed">
+                By entering my email, I acknowledge the <a href="#" class="underline hover:text-olive-900 spring">Privacy Policy</a>.
+              </p>
+              <button
+                type="submit"
+                class="px-6 py-3 bg-olive-900 text-cream font-semibold text-sm rounded-lg border-2 border-olive-900 spring hover:scale-105 hover:bg-olive-800 active:scale-95 focus-visible:ring-2 focus-visible:ring-olive-900 focus-visible:ring-offset-2 focus-visible:ring-offset-cream whitespace-nowrap"
+              >
+                Schedule free consultation
+              </button>
+            </div>
+          </form>
+
+          <!-- Toolkit CTA -->
+          <a href="#" onclick="event.preventDefault(); handleEmailSubmit();" class="group flex items-center gap-4 p-4 mt-6 bg-gold-200/60 border border-gold-300/40 rounded-xl spring hover:scale-[1.02] hover:bg-gold-200/80 active:scale-[0.98]">
+            <div class="flex-shrink-0 w-12 h-12 bg-gold-300/30 rounded-lg flex items-center justify-center">
+              <svg class="w-7 h-7 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                <path d="M9 14l2 2 4-4"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold text-olive-900 text-sm sm:text-base">Get our FREE Contact the SBA Toolkit</p>
+              <p class="text-xs sm:text-sm text-olive-700/80">Packed with freebies and important information</p>
+            </div>
+            <svg class="w-5 h-5 text-olive-600 ml-auto spring group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- ═══ STEP 2: Choose Path ═══ -->
+        <div id="step-choose" class="hidden">
+          <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-elevated border border-olive-900/5">
+            <div class="flex items-center gap-2 mb-4">
+              <svg class="w-5 h-5 text-olive-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <p class="text-sm font-semibold text-olive-900">Email saved! What would you like to do?</p>
+            </div>
+            <div class="grid gap-3">
+              <button onclick="goToQuiz()" class="flex items-center gap-3 p-4 bg-olive-900 text-cream rounded-xl text-left spring hover:scale-[1.02] hover:bg-olive-800 active:scale-[0.98]">
+                <div class="w-10 h-10 bg-cream/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 14l2 2 4-4"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm">Take the 5-Question Assessment</p>
+                  <p class="text-xs text-cream/70">Find out if we can help your situation</p>
+                </div>
+              </button>
+              <button onclick="skipToDownload()" class="flex items-center gap-3 p-4 bg-cream border border-olive-900/10 text-olive-900 rounded-xl text-left spring hover:scale-[1.02] hover:bg-cream-dark active:scale-[0.98]">
+                <div class="w-10 h-10 bg-olive-900/5 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm">Just Schedule My Free Consultation</p>
+                  <p class="text-xs text-olive-600">Skip the quiz — we'll call you directly</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ STEP 3: Quiz ═══ -->
+        <div id="step-quiz" class="hidden">
+          <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-elevated border border-olive-900/5">
+            <!-- Progress bar -->
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-semibold text-olive-700">Question <span id="qNum">1</span> of 5</span>
+              <span class="text-xs text-olive-600" id="qPercent">20%</span>
+            </div>
+            <div class="w-full h-2 bg-olive-900/10 rounded-full mb-5 overflow-hidden">
+              <div id="qBar" class="h-full bg-olive-900 rounded-full spring" style="width: 20%;"></div>
+            </div>
+
+            <!-- Question area -->
+            <div id="quizQuestion">
+              <p id="qText" class="font-heading font-bold text-lg text-olive-900 mb-4"></p>
+              <div id="qOptions" class="grid gap-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ STEP 4: Download + Redirect ═══ -->
+        <div id="step-download" class="hidden">
+          <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-elevated border border-olive-900/5 text-center">
+            <div class="w-16 h-16 bg-olive-900/5 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-olive-900 mb-2" id="downloadTitle">You're All Set!</h3>
+            <p class="text-sm text-olive-700 mb-5" id="downloadSubtext">Your free Contact the SBA Package is ready.</p>
+            <a href="#" id="downloadBtn" class="inline-flex items-center gap-2 px-6 py-3.5 bg-gold-300 text-olive-900 font-bold text-sm rounded-lg spring hover:scale-105 hover:bg-gold-400 active:scale-95 mb-3">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download Free SBA Package
+            </a>
+            <p class="text-xs text-olive-600/60 mt-3">Redirecting to full resource center in <span id="countdown">5</span>s...</p>
+            <div class="w-full h-1 bg-olive-900/10 rounded-full mt-2 overflow-hidden">
+              <div id="redirectBar" class="h-full bg-olive-700 rounded-full" style="width: 0%; transition: width 5s linear;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Phone mockup — transparent PNG, floating -->
+      <div class="relative flex justify-center lg:justify-end items-start lg:-mr-8 xl:-mr-12">
+        <div class="relative float-slow lg:mt-[-20px]">
+          <img
+            src="PHONE-MOCKUP-UPDATE.png"
+            alt="Phone showing SBA EIDL sent to Treasury notification"
+            class="w-full max-w-[380px] lg:max-w-[480px] xl:max-w-[540px] h-auto object-contain"
+            style="filter: drop-shadow(0 20px 50px rgba(0,0,0,0.18));"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       URGENCY BAR
+       ══════════════════════════════════════════════════════════ -->
+  <section class="bg-olive-900 py-4 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" aria-hidden="true">
+      <div class="absolute inset-0 bg-gradient-to-r from-olive-800 via-olive-900 to-olive-800"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-6 md:gap-12 text-cream">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gold-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6z"/><rect x="11" y="10" width="2" height="4"/><rect x="11" y="16" width="2" height="2"/></svg>
+        <span class="text-sm font-semibold">Deadlines are approaching</span>
+      </div>
+      <div class="hidden md:block w-px h-6 bg-cream/20"></div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span class="text-sm">Don't wait until it's too late</span>
+      </div>
+      <div class="hidden md:block w-px h-6 bg-cream/20"></div>
+      <a href="#heroForm" class="text-sm font-bold text-gold-200 underline underline-offset-2 spring hover:text-gold-100">Act now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TRUST BADGES
+       ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-20 bg-cream grain relative">
+    <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="spring hover:scale-105">
+        <p class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-tight">25+</p>
+        <p class="text-sm text-olive-700 mt-1">Years Experience</p>
+      </div>
+      <div class="spring hover:scale-105">
+        <p class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-tight">5,000+</p>
+        <p class="text-sm text-olive-700 mt-1">Cases Reviewed</p>
+      </div>
+      <div class="spring hover:scale-105">
+        <p class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-tight">100%</p>
+        <p class="text-sm text-olive-700 mt-1">Independent</p>
+      </div>
+      <div class="spring hover:scale-105">
+        <p class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-tight">24/7</p>
+        <p class="text-sm text-olive-700 mt-1">Resource Access</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HOW IT WORKS
+       ══════════════════════════════════════════════════════════ -->
+  <section id="how-it-works" class="py-20 md:py-28 bg-white grain relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 bg-olive-900/5 text-olive-800 text-xs font-semibold rounded-full tracking-wide uppercase mb-4">How It Works</span>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-[-0.02em]">Three Simple Steps to Get Help</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="relative p-8 bg-cream rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating group">
+          <div class="w-14 h-14 bg-olive-900 text-cream rounded-xl flex items-center justify-center text-xl font-heading font-bold mb-6 spring group-hover:rotate-3">1</div>
+          <h3 class="font-heading font-bold text-xl text-olive-900 mb-3">Schedule Your Free Call</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Fill out our quick form and we'll reach out to discuss your SBA EIDL situation at no cost.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="relative p-8 bg-cream rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating group">
+          <div class="w-14 h-14 bg-olive-900 text-cream rounded-xl flex items-center justify-center text-xl font-heading font-bold mb-6 spring group-hover:rotate-3">2</div>
+          <h3 class="font-heading font-bold text-xl text-olive-900 mb-3">We Review Your Case</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Our experienced team evaluates your EIDL loan details and identifies the best path forward.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="relative p-8 bg-cream rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating group">
+          <div class="w-14 h-14 bg-olive-900 text-cream rounded-xl flex items-center justify-center text-xl font-heading font-bold mb-6 spring group-hover:rotate-3">3</div>
+          <h3 class="font-heading font-bold text-xl text-olive-900 mb-3">Get Resolution Support</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">We guide you through the process of resolving your Treasury referral with expert resources.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SERVICES / WHAT WE HELP WITH
+       ══════════════════════════════════════════════════════════ -->
+  <section id="services" class="py-20 md:py-28 bg-cream grain relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 bg-gold-200/60 text-gold-500 text-xs font-semibold rounded-full tracking-wide uppercase mb-4">Our Services</span>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-[-0.02em]">What SmallBiz Recon Helps With</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">Treasury Referral Defense</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Expert guidance when your EIDL loan has been sent to the Treasury Department without proper notice.</p>
+        </div>
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">SBA Forms & Toolkits</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Access free toolkits, forms, and templates needed to navigate the SBA process effectively.</p>
+        </div>
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">Policy Alerts & Updates</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Stay informed with real-time alerts about SBA policy changes that could affect your loan status.</p>
+        </div>
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">Case Evaluation</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Get a personalized assessment of your situation and understand your options moving forward.</p>
+        </div>
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">Community Intel Board</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Connect with other small business owners facing similar SBA challenges and share strategies.</p>
+        </div>
+        <!-- Card -->
+        <div class="p-6 bg-white rounded-2xl shadow-elevated spring hover:scale-[1.02] hover:shadow-floating border border-olive-900/5">
+          <div class="w-12 h-12 bg-olive-900/5 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-olive-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-olive-900 mb-2">Subordination Help</h3>
+          <p class="text-sm text-olive-700 leading-relaxed">Assistance with SBA loan subordination requests and navigating the approval process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TESTIMONIALS
+       ══════════════════════════════════════════════════════════ -->
+  <section id="testimonials" class="py-20 md:py-28 bg-white grain relative">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 bg-olive-900/5 text-olive-800 text-xs font-semibold rounded-full tracking-wide uppercase mb-4">Results</span>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-olive-900 tracking-[-0.02em]">Small Business Owners Trust Us</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 bg-cream rounded-2xl shadow-elevated border border-olive-900/5">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-olive-700 leading-relaxed mb-6 italic">"I had no idea my EIDL was sent to the Treasury until I got a notice from a collection agency. SmallBiz Recon helped me understand my options and fight back."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-olive-900/10 flex items-center justify-center text-olive-800 font-bold text-sm">MR</div>
+            <div>
+              <p class="font-semibold text-sm text-olive-900">Maria R.</p>
+              <p class="text-xs text-olive-600">Restaurant Owner, TX</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-8 bg-cream rounded-2xl shadow-elevated border border-olive-900/5">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-olive-700 leading-relaxed mb-6 italic">"The free toolkit alone saved me hours of research. SmallBiz Recon knows the SBA process inside and out. Couldn't have navigated this without them."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-olive-900/10 flex items-center justify-center text-olive-800 font-bold text-sm">JT</div>
+            <div>
+              <p class="font-semibold text-sm text-olive-900">James T.</p>
+              <p class="text-xs text-olive-600">Retail Business Owner, FL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       BOTTOM CTA
+       ══════════════════════════════════════════════════════════ -->
+  <section id="cta-bottom" class="py-20 md:py-28 bg-olive-900 grain relative overflow-hidden">
+    <!-- Radial gradient decoration -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-300/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-olive-700/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+      <img src="project/public/smallbizrecon_logo_transparent.png" alt="" class="w-20 h-20 mx-auto mb-8 object-contain" aria-hidden="true" />
+      <h2 class="font-heading font-bold text-3xl md:text-4xl text-cream tracking-[-0.02em] mb-4">Don't Let the SBA Push You Around</h2>
+      <p class="text-cream/70 text-lg mb-10 max-w-lg mx-auto leading-relaxed">Get your free consultation today and find out how SmallBiz Recon can help resolve your EIDL issue.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-4" onsubmit="event.preventDefault(); alert('Thank you! We will be in touch.');">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="flex-1 px-5 py-3.5 bg-white/10 border border-cream/20 rounded-lg text-cream placeholder:text-cream/40 focus:outline-none focus:ring-2 focus:ring-gold-300 focus:border-gold-300 spring font-body backdrop-blur-sm"
+        />
+        <button
+          type="submit"
+          class="px-6 py-3.5 bg-gold-300 text-olive-900 font-bold text-sm rounded-lg spring hover:scale-105 hover:bg-gold-400 active:scale-95 focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 whitespace-nowrap"
+        >
+          Schedule Free Consultation
+        </button>
+      </form>
+      <p class="text-xs text-cream/40">No obligation. No credit card required. 100% free initial consultation.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════ -->
+  <footer class="bg-olive-900 border-t border-cream/5 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="project/public/smallbizrecon_logo_transparent.png" alt="SmallBiz Recon" class="h-8 w-8 object-contain" />
+        <span class="text-cream/60 text-sm">&copy; 2026 SmallBiz Recon. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-cream/40">
+        <a href="#" class="spring hover:text-cream/80">Privacy Policy</a>
+        <a href="#" class="spring hover:text-cream/80">Terms</a>
+        <a href="#" class="spring hover:text-cream/80">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu toggle + Quiz Logic -->
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+    // ═══ FLOW STATE ═══
+    let userEmail = '';
+    let quizAnswers = [];
+    let currentQ = 0;
+
+    const questions = [
+      {
+        q: "Has your EIDL been sent to the Treasury?",
+        opts: ["Yes", "No", "I'm not sure"]
+      },
+      {
+        q: "Were you notified by the SBA?",
+        opts: ["Yes", "No", "I found out another way"]
+      },
+      {
+        q: "Were you sent to a collection agency?",
+        opts: ["Yes", "No", "I'm not sure"]
+      },
+      {
+        q: "Were you making payments?",
+        opts: ["Yes, I was current", "I had fallen behind", "No, I stopped paying"]
+      },
+      {
+        q: "If returned to the SBA, can you resume your normal monthly payment?",
+        opts: ["Yes", "No", "I would need a modified plan"]
+      }
+    ];
+
+    // Step transitions
+    function showStep(id) {
+      ['step-email', 'step-choose', 'step-quiz', 'step-download'].forEach(s => {
+        document.getElementById(s).classList.add('hidden');
+      });
+      const el = document.getElementById(id);
+      el.classList.remove('hidden');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      requestAnimationFrame(() => {
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    }
+
+    function handleEmailSubmit() {
+      const input = document.getElementById('userEmail');
+      if (!input.value || !input.value.includes('@')) {
+        input.focus();
+        input.classList.add('ring-2', 'ring-red-400');
+        setTimeout(() => input.classList.remove('ring-2', 'ring-red-400'), 2000);
+        return;
+      }
+      userEmail = input.value;
+      showStep('step-choose');
+    }
+
+    function goToQuiz() {
+      currentQ = 0;
+      quizAnswers = [];
+      showStep('step-quiz');
+      renderQuestion();
+    }
+
+    function skipToDownload() {
+      showDownload("We'll Be in Touch!", "Your free consultation is scheduled. Download your SBA Package below.");
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('qNum').textContent = currentQ + 1;
+      document.getElementById('qPercent').textContent = Math.round(((currentQ + 1) / questions.length) * 100) + '%';
+      document.getElementById('qBar').style.width = ((currentQ + 1) / questions.length * 100) + '%';
+      document.getElementById('qText').textContent = q.q;
+
+      const container = document.getElementById('qOptions');
+      container.innerHTML = '';
+      q.opts.forEach((opt, i) => {
+        const b = document.createElement('button');
+        b.className = 'w-full text-left px-4 py-3 bg-cream border border-olive-900/10 rounded-xl text-sm font-medium text-olive-900 spring hover:scale-[1.01] hover:bg-cream-dark hover:border-olive-900/20 active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-olive-700';
+        b.textContent = opt;
+        b.onclick = () => selectAnswer(opt);
+        container.appendChild(b);
+      });
+    }
+
+    function selectAnswer(answer) {
+      quizAnswers.push({ q: questions[currentQ].q, a: answer });
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        showDownload("Assessment Complete!", "Based on your answers, we may be able to help. Download your free SBA Package and we'll follow up.");
+      }
+    }
+
+    function showDownload(title, subtext) {
+      document.getElementById('downloadTitle').textContent = title;
+      document.getElementById('downloadSubtext').textContent = subtext;
+      showStep('step-download');
+
+      // Start countdown redirect
+      let secs = 5;
+      document.getElementById('redirectBar').style.width = '100%';
+      const timer = setInterval(() => {
+        secs--;
+        document.getElementById('countdown').textContent = secs;
+        if (secs <= 0) {
+          clearInterval(timer);
+          // Redirect to main site — update this URL
+          window.location.href = 'https://smallbizrecon.com';
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

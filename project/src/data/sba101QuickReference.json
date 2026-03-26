@@ -1,0 +1,119 @@
+{
+  "sections": [
+    {
+      "title": "SBA Basics",
+      "content": "The Small Business Administration (SBA) is a federal agency that supports small businesses through loan guarantees, not direct lending. They work with approved lenders to reduce risk and increase access to capital for small businesses."
+    },
+    {
+      "title": "SBA Loan Types",
+      "content": "Main SBA loan programs include: 7(a) loans (most flexible), 504 loans (real estate/equipment), Microloans (up to $50K), Express loans (fast approval), and Disaster loans (including COVID EIDL)."
+    },
+    {
+      "title": "Eligibility Requirements",
+      "content": "To qualify for SBA loans: be a for-profit business in the US, meet size standards for your industry, have owner investment, good credit, and owners with 20%+ must personally guarantee."
+    },
+    {
+      "title": "SBA Servicing Terms",
+      "content": "Common servicing terms include: Subordination (allowing another lender to take priority position), Collateral Release (selling secured assets), Change in Ownership (transfers over 20%), and Relocation (moving business location)."
+    },
+    {
+      "title": "How SmallBiz Recon™ Can Help",
+      "content": "SmallBiz Recon™ specializes in helping small business owners navigate their SBA servicing journey. We offer free guides, resources, and hard-to-find information that government agencies don't always make easy to access - so you can move forward with confidence. We've done the research and uncovered the knowledge you need to successfully manage your SBA obligations."
+    },
+    {
+      "title": "Common SBA Servicing Scenarios",
+      "content": "Business owners often face situations like: needing to modify loan terms, struggling with payments, selling a business with an SBA loan, or understanding servicing options. SmallBiz Recon™ has detailed free guides to help you navigate each of these situations and more."
+    },
+    {
+      "title": "SmallBiz Recon™ Resources",
+      "content": "Access our comprehensive library of free guides covering SBA servicing, small business management, compliance requirements, and strategic planning. We also provide step-by-step walkthroughs for common servicing requests, templates, and tools to make your journey easier. Our mission is to demystify the SBA process and empower you with actionable information."
+    },
+    {
+      "title": "Contact Information",
+      "content": "For COVID EIDL servicing: call 833-853-5638 or email COVIDEIDLServicing@sba.gov (Mon-Fri, 8am-8pm ET). For disaster loans: call 800-659-2955. For general inquiries: call 800-827-5722. For SmallBiz Recon™ support and resources, visit our website or reach out to our team."
+    }
+  ],
+  "terms": [
+    {
+      "term": "UCC Lien",
+      "definition": "A UCC lien is a legal claim the SBA files to secure their interest in your business assets. It's public record and affects your ability to get additional financing."
+    },
+    {
+      "term": "Personal Guarantee",
+      "definition": "A personal guarantee means you're personally liable for the loan if your business defaults. Required for owners with 20% or more ownership in SBA loans."
+    },
+    {
+      "term": "Subordination",
+      "definition": "Subordination allows another lender to take a higher priority position than your SBA loan. Required when refinancing or getting additional senior debt."
+    },
+    {
+      "term": "Collateral Release",
+      "definition": "Permission to sell or release assets that secure your SBA loan. The SBA must approve all collateral releases before you can proceed."
+    },
+    {
+      "term": "Change in Ownership",
+      "definition": "Any transfer of 20% or more ownership requires SBA approval. New owners must qualify and provide personal guarantees."
+    },
+    {
+      "term": "SBA Guarantee",
+      "definition": "The SBA doesn't lend directly - they guarantee a portion of the loan (usually 75-85%) to reduce lender risk and encourage lending to small businesses."
+    },
+    {
+      "term": "SBA Servicing Journey",
+      "definition": "The ongoing process of managing your SBA loan after approval - including payments, modifications, compliance, and requests. SmallBiz Recon™ provides free resources and guides to help you navigate this process with confidence."
+    },
+    {
+      "term": "Loan Modification",
+      "definition": "A change to your original loan terms, such as payment amount, interest rate, or maturity date. SBA approval is required for most modifications. SmallBiz Recon™ offers guides on how to request and navigate loan modifications."
+    },
+    {
+      "term": "Standby Agreement",
+      "definition": "An agreement where owners agree not to take compensation from the business until certain loan conditions are met. Often required during loan workouts or when a business is struggling financially."
+    },
+    {
+      "term": "Offer in Compromise (OIC)",
+      "definition": "A settlement option where the SBA may accept less than the full loan amount if you can't pay the full balance. This is typically considered when a business has closed or is insolvent."
+    },
+    {
+      "term": "Affiliation Rules",
+      "definition": "SBA rules that determine whether multiple businesses are considered affiliated for size standard purposes. Affiliation can be based on ownership, management, or contractual relationships."
+    },
+    {
+      "term": "Standard Operating Procedure (SOP)",
+      "definition": "The SBA's official guidelines that lenders and borrowers must follow. SOP 50 10 covers the 7(a) loan program, while SOP 50 57 covers servicing and liquidation. Understanding these can help you know your rights and options."
+    }
+  ],
+  "smallBusinessResources": [
+    {
+      "category": "Getting Started",
+      "description": "Guides on business formation, licensing, permits, and foundational planning for new business owners."
+    },
+    {
+      "category": "Financial Management",
+      "description": "Resources on bookkeeping, cash flow management, financial statements, and working with accountants."
+    },
+    {
+      "category": "SBA Loan Management",
+      "description": "Comprehensive guides on managing your SBA loan, understanding your obligations, and knowing your options if you face challenges."
+    },
+    {
+      "category": "Compliance & Reporting",
+      "description": "Information on tax obligations, employment law, industry-specific regulations, and staying compliant with SBA requirements."
+    },
+    {
+      "category": "Growth Strategies",
+      "description": "Resources on scaling your business, marketing, hiring, and accessing additional capital when you're ready to expand."
+    }
+  ],
+  "whySmallBizRecon": {
+    "title": "Why Choose SmallBiz Recon™",
+    "points": [
+      "We uncover information that government agencies make difficult to find",
+      "All our guides and resources are completely free",
+      "We specialize in SBA servicing - the journey AFTER you get your loan",
+      "Our content is written in plain English, not bureaucratic jargon",
+      "We're advocates for small business owners, not lenders or government agencies",
+      "We provide actionable steps, not just information"
+    ]
+  }
+}
