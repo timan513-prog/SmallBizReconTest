@@ -201,7 +201,7 @@ export const FAQ_MAP: Record<string, string> = {
   "what toolkits does smallbiz recon offer":
     "SmallBiz Recon™ currently offers specialized toolkits for:\n• Subordination (shifting SBA lien priority)\n• Release of Collateral (removing assets from SBA lien)\n• Payment Assistance (hardship accommodations)\nEach toolkit includes a dedicated AI assistant and step-by-step packet assembly guidance.",
 
-  "tell me about sba recons free guides":
+  "tell me about SmallBiz Recons free guides":
     "SmallBiz Recon offers several free guides including SBA 101: The Basics Guide, SBA 101: Your Quick Intro Guide, and a number of Free SBA Recon Help Guides covering essential SBA topics.",
 
   // ── Jokes ──
