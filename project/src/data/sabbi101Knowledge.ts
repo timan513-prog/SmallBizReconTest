@@ -361,7 +361,7 @@ export const FAQ_ALIASES: Record<string, string> = {
   "toolkits": "what toolkits does smallbiz recon offer",
   "what toolkits": "what toolkits does smallbiz recon offer",
   "free guides": "tell me about SmallBiz Recons free guides",
-  "SmallBiz Recon free guides": "tell me about sba recons free guides",
+  "SmallBiz Recon free guides": "tell me about SmallBiz Recons free guides",
 
   // Jokes
   "tell me a joke": "tell me an sba joke",
