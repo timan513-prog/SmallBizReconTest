@@ -16,24 +16,12 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
     href.startsWith('http') || href.startsWith('https');
 
   return (
-    <div
-      aria-live="polite"
-      style={{
-        animation: 'evalFadeUp 0.45s ease both',
-      }}
-    >
-      <style>{`
-        @keyframes evalFadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-
+    <div aria-live="polite">
       {/* Score gauge centered */}
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: 32,
+        marginBottom: 28,
       }}>
         <ScoreGauge
           score={result.score}
@@ -44,17 +32,17 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
 
       {/* Tier description */}
       <div style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: 14,
-        padding: '20px 24px',
+        background: 'var(--color-bg-warm)',
+        border: '1px solid var(--color-border-light)',
+        borderRadius: 12,
+        padding: '18px 22px',
         marginBottom: 24,
         textAlign: 'center',
       }}>
         <p style={{
-          fontFamily: "'DM Sans', system-ui, sans-serif",
-          fontSize: 16,
-          color: 'rgba(232,237,226,0.8)',
+          fontFamily: 'var(--font-body)',
+          fontSize: 15,
+          color: 'var(--color-text-secondary)',
           lineHeight: 1.7,
           margin: 0,
         }}>
@@ -64,19 +52,18 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
 
       {/* Recommended next steps */}
       <div style={{
-        background: 'rgba(200,168,78,0.05)',
-        border: '1px solid rgba(200,168,78,0.18)',
-        borderRadius: 14,
-        padding: '22px 24px',
-        marginBottom: 32,
+        background: 'rgba(59, 74, 44, 0.04)',
+        border: '1px solid rgba(59, 74, 44, 0.12)',
+        borderRadius: 12,
+        padding: '22px 22px',
+        marginBottom: 28,
       }}>
         <h3 style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
+          fontFamily: 'var(--font-display)',
           fontSize: 18,
           fontWeight: 400,
-          color: '#e8ede2',
-          margin: '0 0 18px',
-          letterSpacing: '-0.01em',
+          color: 'var(--color-text)',
+          margin: '0 0 16px',
         }}>
           Recommended Next Steps
         </h3>
@@ -95,8 +82,8 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
                 width: 24,
                 height: 24,
                 borderRadius: '50%',
-                background: 'rgba(200,168,78,0.15)',
-                border: '1px solid rgba(200,168,78,0.25)',
+                background: 'rgba(59, 74, 44, 0.08)',
+                border: '1px solid rgba(59, 74, 44, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -106,8 +93,8 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
                 <span style={{
                   fontSize: 11,
                   fontWeight: 700,
-                  color: '#c8a84e',
-                  fontFamily: "'JetBrains Mono', monospace",
+                  color: 'var(--color-brand-green)',
+                  fontFamily: 'var(--font-body)',
                 }}>
                   {i + 1}
                 </span>
@@ -124,8 +111,8 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
                       alignItems: 'center',
                       gap: 6,
                       fontSize: 15,
-                      color: '#c8a84e',
-                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      color: 'var(--color-brand-green)',
+                      fontFamily: 'var(--font-body)',
                       textDecoration: 'none',
                       fontWeight: 500,
                       lineHeight: 1.4,
@@ -143,8 +130,8 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
                       alignItems: 'center',
                       gap: 6,
                       fontSize: 15,
-                      color: '#c8a84e',
-                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      color: 'var(--color-brand-green)',
+                      fontFamily: 'var(--font-body)',
                       textDecoration: 'none',
                       fontWeight: 500,
                       lineHeight: 1.4,
@@ -158,8 +145,8 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
               ) : (
                 <span style={{
                   fontSize: 15,
-                  color: 'rgba(232,237,226,0.7)',
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  color: 'var(--color-text-secondary)',
+                  fontFamily: 'var(--font-body)',
                   lineHeight: 1.4,
                   paddingTop: 3,
                 }}>
@@ -172,15 +159,15 @@ export default function EvaluatorResults({ result, onRetake }: EvaluatorResultsP
       </div>
 
       {/* Retake */}
-      <div style={{ textAlign: 'center', marginBottom: 8 }}>
+      <div style={{ textAlign: 'center' }}>
         <button
           onClick={onRetake}
           style={{
             background: 'transparent',
             border: 'none',
-            color: 'rgba(232,237,226,0.4)',
+            color: 'var(--color-text-muted)',
             fontSize: 13,
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            fontFamily: 'var(--font-body)',
             cursor: 'pointer',
             textDecoration: 'underline',
             padding: '4px 0',

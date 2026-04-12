@@ -8,11 +8,11 @@ interface ScoreGaugeProps {
 }
 
 const TIER_COLORS: Record<ScoreTier, string> = {
-  critical: '#e8a04e',
-  strong: '#c8a84e',
-  moderate: '#9ab87a',
-  early: '#7ab0e0',
-  low: '#8a9480',
+  critical: '#B5651D',
+  strong: '#3B4A2C',
+  moderate: '#5A7A3A',
+  early: '#4A7A9B',
+  low: '#7D827A',
 };
 
 export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) {
@@ -20,7 +20,7 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
 
   useEffect(() => {
     const start = performance.now();
-    const duration = 1400;
+    const duration = 1200;
 
     const step = (now: number) => {
       const elapsed = now - start;
@@ -34,8 +34,8 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
     return () => cancelAnimationFrame(raf);
   }, [score]);
 
-  const radius = 72;
-  const stroke = 9;
+  const radius = 68;
+  const stroke = 8;
   const normalizedRadius = radius - stroke / 2;
   const circumference = normalizedRadius * 2 * Math.PI;
   const offset = circumference - (animated / 100) * circumference;
@@ -49,7 +49,7 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 14,
+        gap: 12,
       }}
     >
       <div style={{ position: 'relative', width: radius * 2, height: radius * 2 }}>
@@ -64,7 +64,7 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
             cy={radius}
             r={normalizedRadius}
             fill="none"
-            stroke="rgba(255,255,255,0.07)"
+            stroke="var(--color-border-light)"
             strokeWidth={stroke}
           />
           <circle
@@ -77,10 +77,7 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
             strokeLinecap="round"
             strokeDasharray={`${circumference} ${circumference}`}
             strokeDashoffset={offset}
-            style={{
-              transition: 'stroke-dashoffset 0.05s ease',
-              filter: `drop-shadow(0 0 8px ${color}66)`,
-            }}
+            style={{ transition: 'stroke-dashoffset 0.05s ease' }}
           />
         </svg>
 
@@ -93,8 +90,8 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
           justifyContent: 'center',
         }}>
           <span style={{
-            fontFamily: "'Instrument Serif', Georgia, serif",
-            fontSize: 38,
+            fontFamily: 'var(--font-display)',
+            fontSize: 36,
             fontWeight: 400,
             color,
             lineHeight: 1,
@@ -102,11 +99,10 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
             {animated}
           </span>
           <span style={{
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            color: 'rgba(232,237,226,0.4)',
-            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 12,
+            fontWeight: 600,
+            color: 'var(--color-text-muted)',
+            fontFamily: 'var(--font-body)',
           }}>
             /100
           </span>
@@ -118,14 +114,13 @@ export default function ScoreGauge({ score, tier, tierLabel }: ScoreGaugeProps) 
         alignItems: 'center',
         padding: '5px 16px',
         borderRadius: 100,
-        background: `${color}18`,
-        border: `1px solid ${color}44`,
+        background: `${color}12`,
+        border: `1px solid ${color}33`,
       }}>
         <span style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
+          fontFamily: 'var(--font-display)',
           fontSize: 16,
           color,
-          letterSpacing: '-0.01em',
         }}>
           {tierLabel}
         </span>

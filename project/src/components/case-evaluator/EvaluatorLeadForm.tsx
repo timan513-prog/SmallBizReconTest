@@ -68,45 +68,45 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
     return (
       <div
         style={{
-          background: 'rgba(154,184,122,0.07)',
-          border: '1px solid rgba(154,184,122,0.2)',
-          borderRadius: 16,
-          padding: '36px 28px',
+          background: 'rgba(59, 74, 44, 0.04)',
+          border: '1px solid rgba(59, 74, 44, 0.12)',
+          borderRadius: 12,
+          padding: '32px 24px',
           textAlign: 'center',
-          animation: 'evalFadeUp 0.4s ease both',
         }}
       >
         <div style={{
-          width: 52,
-          height: 52,
+          width: 48,
+          height: 48,
           borderRadius: '50%',
-          background: 'rgba(154,184,122,0.15)',
-          border: '1px solid rgba(154,184,122,0.3)',
+          background: 'rgba(59, 74, 44, 0.08)',
+          border: '1px solid rgba(59, 74, 44, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: '0 auto 18px',
-          fontSize: 24,
+          margin: '0 auto 16px',
+          fontSize: 22,
+          color: 'var(--color-brand-green)',
         }}>
           ✓
         </div>
         <h3 style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
-          fontSize: 22,
+          fontFamily: 'var(--font-display)',
+          fontSize: 20,
           fontWeight: 400,
-          color: '#e8ede2',
-          margin: '0 0 12px',
+          color: 'var(--color-text)',
+          margin: '0 0 10px',
         }}>
           Your case summary is on the way.
         </h3>
         <p style={{
-          fontFamily: "'DM Sans', system-ui, sans-serif",
+          fontFamily: 'var(--font-body)',
           fontSize: 15,
-          color: 'rgba(232,237,226,0.6)',
+          color: 'var(--color-text-secondary)',
           lineHeight: 1.6,
-          margin: '0 0 22px',
+          margin: '0 0 20px',
         }}>
-          A SmallBiz Recon™ specialist will follow up within 24 hours.
+          A SmallBiz Recon specialist will follow up within 24 hours.
         </p>
         <a
           href="https://calendly.com/smallbizrecon1/30min"
@@ -115,10 +115,10 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: 7,
+            gap: 6,
             fontSize: 14,
-            color: '#c8a84e',
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            color: 'var(--color-brand-green)',
+            fontFamily: 'var(--font-body)',
             fontWeight: 600,
             textDecoration: 'none',
           }}
@@ -132,35 +132,34 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
 
   return (
     <div style={{
-      background: 'rgba(255,255,255,0.03)',
-      border: '1px solid rgba(255,255,255,0.08)',
-      borderRadius: 16,
-      padding: '28px 28px',
+      background: 'var(--color-bg-warm)',
+      border: '1px solid var(--color-border-light)',
+      borderRadius: 12,
+      padding: '24px',
     }}>
       <h3 style={{
-        fontFamily: "'Instrument Serif', Georgia, serif",
-        fontSize: 22,
+        fontFamily: 'var(--font-display)',
+        fontSize: 20,
         fontWeight: 400,
-        color: '#e8ede2',
-        margin: '0 0 8px',
-        letterSpacing: '-0.01em',
+        color: 'var(--color-text)',
+        margin: '0 0 6px',
       }}>
         Want a detailed case breakdown sent to your inbox?
       </h3>
       <p style={{
-        fontFamily: "'DM Sans', system-ui, sans-serif",
+        fontFamily: 'var(--font-body)',
         fontSize: 14,
-        color: 'rgba(232,237,226,0.5)',
-        margin: '0 0 24px',
+        color: 'var(--color-text-muted)',
+        margin: '0 0 22px',
       }}>
-        Free · No commitment · Sent within 24 hours
+        Free &middot; No commitment &middot; Sent within 24 hours
       </p>
 
       <form onSubmit={handleSubmit} noValidate>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 18 }}>
           <div>
             <label htmlFor="eval-name" style={labelStyle}>
-              Full Name <span style={{ color: '#c8a84e' }}>*</span>
+              Full Name <span style={{ color: 'var(--color-gold)' }}>*</span>
             </label>
             <input
               id="eval-name"
@@ -172,14 +171,12 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
               onChange={handleChange}
               placeholder="Jane Smith"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(200,168,78,0.4)'; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
             />
           </div>
 
           <div>
             <label htmlFor="eval-email" style={labelStyle}>
-              Email Address <span style={{ color: '#c8a84e' }}>*</span>
+              Email Address <span style={{ color: 'var(--color-gold)' }}>*</span>
             </label>
             <input
               id="eval-email"
@@ -191,14 +188,12 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
               onChange={handleChange}
               placeholder="jane@example.com"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(200,168,78,0.4)'; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
             />
           </div>
 
           <div>
             <label htmlFor="eval-phone" style={labelStyle}>
-              Phone <span style={{ color: 'rgba(232,237,226,0.35)' }}>(optional)</span>
+              Phone <span style={{ color: 'var(--color-text-muted)' }}>(optional)</span>
             </label>
             <input
               id="eval-phone"
@@ -209,14 +204,12 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
               onChange={handleChange}
               placeholder="(555) 000-0000"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(200,168,78,0.4)'; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
             />
           </div>
 
           <div>
             <label htmlFor="eval-situation" style={labelStyle}>
-              Brief description of your situation <span style={{ color: 'rgba(232,237,226,0.35)' }}>(optional)</span>
+              Brief description <span style={{ color: 'var(--color-text-muted)' }}>(optional)</span>
             </label>
             <textarea
               id="eval-situation"
@@ -230,8 +223,6 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
                 resize: 'vertical',
                 minHeight: 80,
               }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(200,168,78,0.4)'; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
             />
           </div>
         </div>
@@ -239,8 +230,8 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
         {error && (
           <p style={{
             fontSize: 13,
-            color: '#d07070',
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            color: '#C0392B',
+            fontFamily: 'var(--font-body)',
             marginBottom: 14,
           }}>
             Something went wrong. Please try again or book directly below.
@@ -252,19 +243,18 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
           disabled={submitting || !form.name || !form.email}
           style={{
             width: '100%',
-            padding: '14px 24px',
-            borderRadius: 10,
+            padding: '13px 24px',
+            borderRadius: 8,
             background: (submitting || !form.name || !form.email)
-              ? 'rgba(255,255,255,0.06)'
-              : 'linear-gradient(135deg, #c8a84e, #e8c870)',
+              ? 'var(--color-border-light)'
+              : 'var(--color-brand-green)',
             border: 'none',
-            color: (submitting || !form.name || !form.email) ? 'rgba(232,237,226,0.3)' : '#1a1e14',
+            color: (submitting || !form.name || !form.email) ? 'var(--color-text-muted)' : '#FAF9F6',
             fontSize: 15,
-            fontWeight: 700,
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            fontWeight: 600,
+            fontFamily: 'var(--font-body)',
             cursor: (submitting || !form.name || !form.email) ? 'not-allowed' : 'pointer',
-            transition: 'all 0.2s ease',
-            marginBottom: 16,
+            marginBottom: 14,
           }}
         >
           {submitting ? 'Sending...' : 'Send My Case Summary'}
@@ -274,8 +264,8 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
       <div style={{ textAlign: 'center' }}>
         <span style={{
           fontSize: 13,
-          color: 'rgba(232,237,226,0.4)',
-          fontFamily: "'DM Sans', system-ui, sans-serif",
+          color: 'var(--color-text-muted)',
+          fontFamily: 'var(--font-body)',
         }}>
           Or skip straight to booking —{' '}
         </span>
@@ -285,8 +275,8 @@ export default function EvaluatorLeadForm({ result, answers }: EvaluatorLeadForm
           rel="noopener noreferrer"
           style={{
             fontSize: 13,
-            color: '#c8a84e',
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            color: 'var(--color-brand-green)',
+            fontFamily: 'var(--font-body)',
             fontWeight: 600,
             textDecoration: 'none',
             display: 'inline-flex',
@@ -306,21 +296,20 @@ const labelStyle: React.CSSProperties = {
   display: 'block',
   fontSize: 13,
   fontWeight: 600,
-  color: 'rgba(232,237,226,0.65)',
-  fontFamily: "'DM Sans', system-ui, sans-serif",
-  marginBottom: 7,
+  color: 'var(--color-text-secondary)',
+  fontFamily: 'var(--font-body)',
+  marginBottom: 6,
 };
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '11px 14px',
-  borderRadius: 10,
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.1)',
-  color: '#e8ede2',
+  borderRadius: 8,
+  background: 'white',
+  border: '1.5px solid var(--color-border)',
+  color: 'var(--color-text)',
   fontSize: 14,
-  fontFamily: "'DM Sans', system-ui, sans-serif",
+  fontFamily: 'var(--font-body)',
   outline: 'none',
-  transition: 'border-color 0.2s ease',
   boxSizing: 'border-box',
 };

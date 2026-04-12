@@ -7,27 +7,26 @@ export default function EvaluatorProgressBar({ current, total }: EvaluatorProgre
   const pct = Math.round((current / total) * 100);
 
   return (
-    <div style={{ marginBottom: 36 }}>
+    <div style={{ marginBottom: 32 }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 10,
+        marginBottom: 8,
       }}>
         <span style={{
-          fontSize: 12,
-          fontWeight: 700,
-          letterSpacing: '0.1em',
-          color: 'rgba(200,168,78,0.7)',
-          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 13,
+          fontWeight: 600,
+          color: 'var(--color-text-muted)',
+          fontFamily: 'var(--font-body)',
         }}>
-          STEP {current} OF {total}
+          Step {current} of {total}
         </span>
         <span style={{
-          fontSize: 12,
+          fontSize: 13,
           fontWeight: 600,
-          color: '#c8a84e',
-          fontFamily: "'JetBrains Mono', monospace",
+          color: 'var(--color-brand-green)',
+          fontFamily: 'var(--font-body)',
         }}>
           {pct}%
         </span>
@@ -35,7 +34,7 @@ export default function EvaluatorProgressBar({ current, total }: EvaluatorProgre
       <div style={{
         height: 4,
         borderRadius: 100,
-        background: 'rgba(255,255,255,0.07)',
+        background: 'var(--color-border-light)',
         overflow: 'hidden',
       }}>
         <div
@@ -48,9 +47,8 @@ export default function EvaluatorProgressBar({ current, total }: EvaluatorProgre
             height: '100%',
             width: `${pct}%`,
             borderRadius: 100,
-            background: 'linear-gradient(90deg, #c8a84e, #e8c870)',
-            transition: 'width 0.5s cubic-bezier(0.4,0,0.2,1)',
-            boxShadow: '0 0 8px rgba(200,168,78,0.4)',
+            background: 'var(--color-brand-green)',
+            transition: 'width 0.4s ease',
           }}
         />
       </div>
