@@ -23,93 +23,111 @@ const CARDS = [
 
 export default function WhoWeHelp() {
   return (
-    <section
-      aria-labelledby="who-we-help-heading"
-      style={{
-        padding: "clamp(60px, 8vw, 100px) 24px",
-        background: "var(--color-bg-warm)",
-      }}
-    >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <h2
-            id="who-we-help-heading"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-              fontWeight: 400,
-              color: "var(--color-text)",
-              letterSpacing: "-0.02em",
-              marginBottom: 14,
-            }}
-          >
-            Who we help
-          </h2>
-          <p style={{
-            fontSize: 16,
-            color: "var(--color-text-secondary)",
-            maxWidth: 520,
-            margin: "0 auto",
-            lineHeight: 1.7,
-            fontFamily: "var(--font-body)",
-          }}>
-            Small business owners dealing with SBA COVID EIDL servicing issues
-            they weren't prepared for.
-          </p>
-        </div>
+    <>
+      <style>{`
+        .sbr-help-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        @media (max-width: 900px) {
+          .sbr-help-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 600px) {
+          .sbr-help-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+      `}</style>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 24,
-        }}>
-          {CARDS.map((card) => {
-            const Icon = card.icon;
-            return (
-              <article
-                key={card.title}
-                style={{
-                  padding: "32px 28px",
-                  background: "white",
-                  border: "1px solid var(--color-border-light)",
-                  borderRadius: 12,
-                }}
-              >
-                <div style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 10,
-                  background: "rgba(59, 74, 44, 0.06)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 20,
-                }}>
-                  <Icon size={22} style={{ color: "var(--color-brand-green)" }} aria-hidden="true" />
-                </div>
-                <h3 style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 17,
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  marginBottom: 10,
-                }}>
-                  {card.title}
-                </h3>
-                <p style={{
-                  fontSize: 15,
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.65,
-                  fontFamily: "var(--font-body)",
-                  margin: 0,
-                }}>
-                  {card.description}
-                </p>
-              </article>
-            );
-          })}
+      <section
+        aria-labelledby="who-we-help-heading"
+        style={{
+          padding: "clamp(56px, 8vw, 100px) 20px",
+          background: "var(--color-bg-warm)",
+        }}
+      >
+        <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "clamp(36px, 5vw, 56px)" }}>
+            <h2
+              id="who-we-help-heading"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
+                fontWeight: 400,
+                color: "var(--color-text)",
+                letterSpacing: "-0.02em",
+                marginBottom: 12,
+              }}
+            >
+              Who we help
+            </h2>
+            <p style={{
+              fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
+              color: "var(--color-text-secondary)",
+              maxWidth: 500,
+              margin: "0 auto",
+              lineHeight: 1.7,
+              fontFamily: "var(--font-body)",
+              padding: "0 8px",
+            }}>
+              Small business owners dealing with SBA COVID EIDL servicing issues
+              they weren't prepared for.
+            </p>
+          </div>
+
+          <div className="sbr-help-grid">
+            {CARDS.map((card) => {
+              const Icon = card.icon;
+              return (
+                <article
+                  key={card.title}
+                  style={{
+                    padding: "clamp(24px, 4vw, 32px) clamp(20px, 3vw, 28px)",
+                    background: "white",
+                    border: "1px solid var(--color-border-light)",
+                    borderRadius: 12,
+                  }}
+                >
+                  <div style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 10,
+                    background: "rgba(59, 74, 44, 0.06)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 18,
+                  }}>
+                    <Icon size={22} style={{ color: "var(--color-brand-green)" }} aria-hidden="true" />
+                  </div>
+                  <h3 style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "clamp(1rem, 1.5vw, 1.06rem)",
+                    fontWeight: 600,
+                    color: "var(--color-text)",
+                    marginBottom: 8,
+                  }}>
+                    {card.title}
+                  </h3>
+                  <p style={{
+                    fontSize: "clamp(0.875rem, 1.4vw, 0.938rem)",
+                    color: "var(--color-text-secondary)",
+                    lineHeight: 1.65,
+                    fontFamily: "var(--font-body)",
+                    margin: 0,
+                  }}>
+                    {card.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

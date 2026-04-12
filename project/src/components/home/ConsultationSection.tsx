@@ -9,29 +9,33 @@ const DETAILS = [
 
 export default function ConsultationSection() {
   return (
-    <section
-      aria-labelledby="consultation-heading"
-      style={{
-        padding: "clamp(60px, 8vw, 100px) 24px",
-        background: "var(--color-bg-warm)",
-      }}
-    >
-      <div style={{
-        maxWidth: 800,
-        margin: "0 auto",
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        gap: 40,
-        alignItems: "center",
-      }}
-        className="consultation-grid"
+    <>
+      <style>{`
+        @media (max-width: 520px) {
+          .sbr-consult-cta {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+          }
+        }
+      `}</style>
+
+      <section
+        aria-labelledby="consultation-heading"
+        style={{
+          padding: "clamp(56px, 8vw, 100px) 20px",
+          background: "var(--color-bg-warm)",
+        }}
       >
-        <div>
+        <div style={{
+          maxWidth: 680,
+          margin: "0 auto",
+        }}>
           <h2
             id="consultation-heading"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.8rem, 4vw, 2.4rem)",
+              fontSize: "clamp(1.6rem, 4vw, 2.3rem)",
               fontWeight: 400,
               color: "var(--color-text)",
               letterSpacing: "-0.02em",
@@ -43,11 +47,11 @@ export default function ConsultationSection() {
           </h2>
 
           <p style={{
-            fontSize: 16,
+            fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
             color: "var(--color-text-secondary)",
             lineHeight: 1.7,
             fontFamily: "var(--font-body)",
-            marginBottom: 28,
+            marginBottom: 24,
             maxWidth: 560,
           }}>
             Book a free consultation with our team. We'll walk through your EIDL
@@ -55,7 +59,14 @@ export default function ConsultationSection() {
             whether that means working with us or handling it on your own.
           </p>
 
-          <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column", gap: 14 }}>
+          <ul style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 28px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+          }}>
             {DETAILS.map((item) => {
               const Icon = item.icon;
               return (
@@ -70,7 +81,11 @@ export default function ConsultationSection() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  <Icon size={18} style={{ color: "var(--color-brand-green)", flexShrink: 0 }} aria-hidden="true" />
+                  <Icon
+                    size={18}
+                    style={{ color: "var(--color-brand-green)", flexShrink: 0 }}
+                    aria-hidden="true"
+                  />
                   {item.text}
                 </li>
               );
@@ -79,6 +94,7 @@ export default function ConsultationSection() {
 
           <Link
             to="/consultation"
+            className="sbr-consult-cta"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -91,21 +107,14 @@ export default function ConsultationSection() {
               fontWeight: 600,
               textDecoration: "none",
               fontFamily: "var(--font-body)",
+              minHeight: 48,
             }}
           >
             Book Your Free Consultation
             <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
-      </div>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .consultation-grid {
-            max-width: 800px !important;
-          }
-        }
-      `}</style>
-    </section>
+      </section>
+    </>
   );
 }

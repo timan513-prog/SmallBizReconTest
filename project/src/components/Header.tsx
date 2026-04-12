@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-const HEADER_HEIGHT = 72;
+const HEADER_HEIGHT = 64;
 
 const NAV_LINKS = [
   { to: "/home", label: "Home" },
@@ -31,12 +31,39 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const closeMobile = useCallback(() => setMobileOpen(false), []);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 769) setMobileOpen(false);
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
   const isActive = (path: string) => location.pathname === path;
 
   return (
     <>
+      <style>{`
+        /* Desktop nav + CTA */
+        .sbr-desktop-nav,
+        .sbr-desktop-cta { display: flex; }
+        .sbr-mobile-toggle { display: none; }
+        .sbr-mobile-menu { display: none; }
+        .sbr-logo-text { display: inline; }
+
+        @media (max-width: 768px) {
+          .sbr-desktop-nav,
+          .sbr-desktop-cta { display: none !important; }
+          .sbr-mobile-toggle { display: flex !important; }
+          .sbr-mobile-menu { display: block !important; }
+        }
+
+        @media (max-width: 380px) {
+          .sbr-logo-text { display: none !important; }
+        }
+      `}</style>
+
       <header
         role="banner"
         style={{
@@ -46,7 +73,7 @@ export default function Header() {
           right: 0,
           zIndex: 1000,
           height: HEADER_HEIGHT,
-          background: scrolled ? "rgba(250, 249, 246, 0.95)" : "rgba(250, 249, 246, 0.8)",
+          background: scrolled ? "rgba(250, 249, 246, 0.97)" : "rgba(250, 249, 246, 0.85)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           borderBottom: scrolled ? "1px solid #E2E0DA" : "1px solid transparent",
@@ -56,7 +83,7 @@ export default function Header() {
         <div style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "0 24px",
+          padding: "0 16px",
           height: "100%",
           display: "flex",
           alignItems: "center",
@@ -71,23 +98,27 @@ export default function Header() {
               gap: 10,
               textDecoration: "none",
               flexShrink: 0,
+              minHeight: 44,
             }}
             aria-label="SmallBiz Recon — Home"
           >
             <img
               src="/smallbizrecon_logo_transparent.png"
               alt=""
-              width={40}
-              height={40}
-              style={{ width: 40, height: 40 }}
+              width={36}
+              height={36}
+              style={{ width: 36, height: 36 }}
               loading="eager"
             />
-            <span style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 20,
-              color: "#3B4A2C",
-              fontWeight: 400,
-            }}>
+            <span
+              className="sbr-logo-text"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 19,
+                color: "var(--color-brand-green)",
+                fontWeight: 400,
+              }}
+            >
               SmallBiz Recon
             </span>
           </Link>
@@ -95,8 +126,8 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav
             aria-label="Primary navigation"
-            style={{ display: "flex", alignItems: "center", gap: 4 }}
-            className="hidden-mobile"
+            className="sbr-desktop-nav"
+            style={{ alignItems: "center", gap: 4 }}
           >
             {NAV_LINKS.map((link) => (
               <Link
@@ -107,10 +138,13 @@ export default function Header() {
                   padding: "8px 16px",
                   fontSize: 15,
                   fontWeight: 500,
-                  color: isActive(link.to) ? "#3B4A2C" : "#5A5F58",
+                  color: isActive(link.to) ? "var(--color-brand-green)" : "var(--color-text-secondary)",
                   textDecoration: "none",
                   borderRadius: 8,
                   background: isActive(link.to) ? "rgba(59, 74, 44, 0.06)" : "transparent",
+                  minHeight: 44,
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
                 {link.label}
@@ -121,18 +155,19 @@ export default function Header() {
           {/* Desktop CTA */}
           <Link
             to="/consultation"
-            className="hidden-mobile"
+            className="sbr-desktop-cta"
             style={{
               display: "inline-flex",
               alignItems: "center",
-              padding: "10px 24px",
+              padding: "10px 22px",
               borderRadius: 8,
-              background: "#3B4A2C",
+              background: "var(--color-brand-green)",
               color: "#FAF9F6",
               fontSize: 14,
               fontWeight: 600,
               textDecoration: "none",
               letterSpacing: "0.01em",
+              minHeight: 44,
             }}
           >
             Free Consultation
@@ -141,20 +176,20 @@ export default function Header() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="show-mobile-only"
+            className="sbr-mobile-toggle"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             style={{
-              display: "none",
               width: 44,
               height: 44,
               borderRadius: 8,
-              border: "1px solid #E2E0DA",
+              border: "1px solid var(--color-border)",
               background: "white",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
-              color: "#3B4A2C",
+              color: "var(--color-brand-green)",
+              flexShrink: 0,
             }}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -170,7 +205,7 @@ export default function Header() {
             position: "fixed",
             inset: 0,
             zIndex: 998,
-            background: "rgba(0,0,0,0.3)",
+            background: "rgba(0,0,0,0.25)",
           }}
           onClick={closeMobile}
         />
@@ -181,38 +216,41 @@ export default function Header() {
         role="navigation"
         aria-label="Mobile navigation"
         aria-hidden={!mobileOpen}
-        className="show-mobile-only"
+        className="sbr-mobile-menu"
         style={{
-          display: "none",
           position: "fixed",
           top: HEADER_HEIGHT,
           left: 0,
           right: 0,
           bottom: 0,
           zIndex: 999,
-          background: "#FAF9F6",
+          background: "var(--color-bg)",
           overflowY: "auto",
+          WebkitOverflowScrolling: "touch",
           opacity: mobileOpen ? 1 : 0,
-          transform: mobileOpen ? "translateY(0)" : "translateY(-12px)",
+          transform: mobileOpen ? "translateY(0)" : "translateY(-8px)",
           pointerEvents: mobileOpen ? "auto" : "none",
-          transition: "opacity 0.25s ease, transform 0.25s ease",
+          transition: "opacity 0.2s ease, transform 0.2s ease",
         }}
       >
-        <div style={{ padding: "24px 24px 32px" }}>
+        <div style={{ padding: "20px 20px 40px" }}>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={closeMobile}
+              tabIndex={mobileOpen ? 0 : -1}
               aria-current={isActive(link.to) ? "page" : undefined}
               style={{
-                display: "block",
-                padding: "16px 0",
-                fontSize: 18,
+                display: "flex",
+                alignItems: "center",
+                padding: "16px 4px",
+                fontSize: 17,
                 fontWeight: 500,
-                color: isActive(link.to) ? "#3B4A2C" : "#5A5F58",
+                color: isActive(link.to) ? "var(--color-brand-green)" : "var(--color-text-secondary)",
                 textDecoration: "none",
-                borderBottom: "1px solid #ECEAE4",
+                borderBottom: "1px solid var(--color-border-light)",
+                minHeight: 52,
               }}
             >
               {link.label}
@@ -222,33 +260,25 @@ export default function Header() {
           <Link
             to="/consultation"
             onClick={closeMobile}
+            tabIndex={mobileOpen ? 0 : -1}
             style={{
               display: "block",
               marginTop: 24,
-              padding: "14px 24px",
-              borderRadius: 8,
-              background: "#3B4A2C",
+              padding: "16px 24px",
+              borderRadius: 10,
+              background: "var(--color-brand-green)",
               color: "#FAF9F6",
               fontSize: 16,
               fontWeight: 600,
               textDecoration: "none",
               textAlign: "center",
+              minHeight: 52,
             }}
           >
             Free Consultation
           </Link>
         </div>
       </nav>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile-only { display: flex !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile-only { display: none !important; }
-        }
-      `}</style>
     </>
   );
 }

@@ -52,221 +52,246 @@ export default function PaidConsultation() {
   const openCalendly = useCalendlyPopup();
 
   return (
-    <div style={{ background: "var(--color-bg)", fontFamily: "var(--font-body)" }}>
-      {/* Hero */}
-      <section
-        aria-labelledby="consultation-page-heading"
-        style={{
-          padding: "clamp(60px, 10vw, 100px) 24px clamp(48px, 8vw, 80px)",
-          background: "var(--color-bg)",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <Link
-            to="/home"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 14,
-              color: "var(--color-text-muted)",
-              textDecoration: "none",
-              marginBottom: 28,
-            }}
-          >
-            <ArrowLeft size={16} aria-hidden="true" />
-            Back to Home
-          </Link>
+    <>
+      <style>{`
+        .sbr-consult-btn {
+          min-height: 48px;
+        }
+        @media (max-width: 520px) {
+          .sbr-consult-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
 
-          <h1
-            id="consultation-page-heading"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: 400,
-              color: "var(--color-text)",
-              letterSpacing: "-0.02em",
-              lineHeight: 1.1,
-              marginBottom: 16,
-            }}
-          >
-            Free Consultation
-          </h1>
-
-          <p style={{
-            fontSize: "clamp(1rem, 2vw, 1.1rem)",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.7,
-            maxWidth: 540,
-            margin: "0 auto 36px",
-          }}>
-            A 30-minute introductory session to help you understand your SBA EIDL
-            situation, your options, and what to do next.
-          </p>
-
-          <button
-            type="button"
-            onClick={openCalendly}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "14px 32px",
-              borderRadius: 8,
-              background: "var(--color-brand-green)",
-              color: "#FAF9F6",
-              fontSize: 16,
-              fontWeight: 600,
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Book Your Free Session
-            <ArrowRight size={16} aria-hidden="true" />
-          </button>
-
-          <p style={{
-            fontSize: 13,
-            color: "var(--color-text-muted)",
-            marginTop: 16,
-          }}>
-            No cost &middot; No obligation &middot; Video or phone call
-          </p>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div style={{ height: 1, background: "var(--color-border-light)", maxWidth: 800, margin: "0 auto" }} />
-
-      {/* Content sections */}
-      <div style={{
-        maxWidth: 720,
-        margin: "0 auto",
-        padding: "clamp(48px, 8vw, 80px) 24px",
-        display: "flex",
-        flexDirection: "column",
-        gap: 56,
-      }}>
-        {/* What We Cover */}
-        <section aria-labelledby="what-we-cover">
-          <h2 id="what-we-cover" style={sectionHeadingStyle}>
-            What the consultation covers
-          </h2>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
-            {WHAT_WE_COVER.map((item) => (
-              <li key={item} style={checkListItemStyle}>
-                <CheckCircle size={18} style={{ color: "var(--color-brand-green)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Who It's For */}
-        <section aria-labelledby="who-its-for">
-          <h2 id="who-its-for" style={sectionHeadingStyle}>
-            Who this is for
-          </h2>
-          <p style={paragraphStyle}>
-            This consultation is for small business owners who have an SBA COVID
-            EIDL loan and are experiencing servicing issues — whether you've been
-            sent to Treasury, placed in collections, received confusing notices,
-            or simply don't know what's happening with your loan.
-          </p>
-          <p style={paragraphStyle}>
-            If you're unsure whether this applies to you, take our{" "}
-            <Link to="/case-evaluator" style={{ color: "var(--color-brand-green)", fontWeight: 500 }}>
-              short case evaluator quiz
-            </Link>{" "}
-            first — it's free, takes 2 minutes, and will give you a clearer picture.
-          </p>
-        </section>
-
-        {/* What to Prepare */}
-        <section aria-labelledby="what-to-prepare">
-          <h2 id="what-to-prepare" style={sectionHeadingStyle}>
-            What to have ready
-          </h2>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
-            {WHAT_TO_PREPARE.map((item) => (
-              <li key={item} style={checkListItemStyle}>
-                <span style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: "var(--color-gold)",
-                  flexShrink: 0,
-                  marginTop: 8,
-                }} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Important to Know */}
+      <div style={{ background: "var(--color-bg)", fontFamily: "var(--font-body)" }}>
+        {/* Hero */}
         <section
-          aria-labelledby="important-to-know"
+          aria-labelledby="consultation-page-heading"
           style={{
-            padding: "28px 24px",
-            background: "var(--color-bg-warm)",
-            borderRadius: 12,
-            border: "1px solid var(--color-border-light)",
+            padding: "clamp(48px, 10vw, 100px) 20px clamp(40px, 8vw, 80px)",
+            background: "var(--color-bg)",
+            textAlign: "center",
           }}
         >
-          <h2 id="important-to-know" style={{ ...sectionHeadingStyle, marginBottom: 14 }}>
-            Important to know
-          </h2>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-            {NOT_INCLUDED.map((item) => (
-              <li key={item} style={{
-                fontSize: 15,
-                color: "var(--color-text-secondary)",
-                lineHeight: 1.6,
-              }}>
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div style={{ maxWidth: 640, margin: "0 auto" }}>
+            <Link
+              to="/home"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                fontSize: 14,
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+                marginBottom: 24,
+                minHeight: 44,
+              }}
+            >
+              <ArrowLeft size={16} aria-hidden="true" />
+              Back to Home
+            </Link>
+
+            <h1
+              id="consultation-page-heading"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
+                fontWeight: 400,
+                color: "var(--color-text)",
+                letterSpacing: "-0.02em",
+                lineHeight: 1.1,
+                marginBottom: 14,
+              }}
+            >
+              Free Consultation
+            </h1>
+
+            <p style={{
+              fontSize: "clamp(0.95rem, 2vw, 1.06rem)",
+              color: "var(--color-text-secondary)",
+              lineHeight: 1.7,
+              maxWidth: 520,
+              margin: "0 auto 32px",
+              padding: "0 4px",
+            }}>
+              A 30-minute introductory session to help you understand your SBA EIDL
+              situation, your options, and what to do next.
+            </p>
+
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="sbr-consult-btn"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "14px 32px",
+                borderRadius: 8,
+                background: "var(--color-brand-green)",
+                color: "#FAF9F6",
+                fontSize: 16,
+                fontWeight: 600,
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Book Your Free Session
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+
+            <p style={{
+              fontSize: 13,
+              color: "var(--color-text-muted)",
+              marginTop: 14,
+            }}>
+              No cost · No obligation · Video or phone call
+            </p>
+          </div>
         </section>
 
-        {/* Bottom CTA */}
-        <div style={{ textAlign: "center", paddingTop: 8 }}>
-          <button
-            type="button"
-            onClick={openCalendly}
+        {/* Divider */}
+        <div style={{
+          height: 1,
+          background: "var(--color-border-light)",
+          maxWidth: 720,
+          margin: "0 auto",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }} />
+
+        {/* Content sections */}
+        <div style={{
+          maxWidth: 680,
+          margin: "0 auto",
+          padding: "clamp(40px, 8vw, 72px) 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "clamp(40px, 6vw, 56px)",
+        }}>
+          {/* What We Cover */}
+          <section aria-labelledby="what-we-cover">
+            <h2 id="what-we-cover" style={sectionHeadingStyle}>
+              What the consultation covers
+            </h2>
+            <ul style={listStyle}>
+              {WHAT_WE_COVER.map((item) => (
+                <li key={item} style={checkListItemStyle}>
+                  <CheckCircle size={18} style={{ color: "var(--color-brand-green)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Who It's For */}
+          <section aria-labelledby="who-its-for">
+            <h2 id="who-its-for" style={sectionHeadingStyle}>
+              Who this is for
+            </h2>
+            <p style={paragraphStyle}>
+              This consultation is for small business owners who have an SBA COVID
+              EIDL loan and are experiencing servicing issues — whether you've been
+              sent to Treasury, placed in collections, received confusing notices,
+              or simply don't know what's happening with your loan.
+            </p>
+            <p style={paragraphStyle}>
+              If you're unsure whether this applies to you, take our{" "}
+              <Link to="/case-evaluator" style={{ color: "var(--color-brand-green)", fontWeight: 500 }}>
+                short case evaluator quiz
+              </Link>{" "}
+              first — it's free, takes 2 minutes, and will give you a clearer picture.
+            </p>
+          </section>
+
+          {/* What to Prepare */}
+          <section aria-labelledby="what-to-prepare">
+            <h2 id="what-to-prepare" style={sectionHeadingStyle}>
+              What to have ready
+            </h2>
+            <ul style={listStyle}>
+              {WHAT_TO_PREPARE.map((item) => (
+                <li key={item} style={checkListItemStyle}>
+                  <span style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: "50%",
+                    background: "var(--color-gold)",
+                    flexShrink: 0,
+                    marginTop: 8,
+                  }} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Important to Know */}
+          <section
+            aria-labelledby="important-to-know"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "14px 32px",
-              borderRadius: 8,
-              background: "var(--color-brand-green)",
-              color: "#FAF9F6",
-              fontSize: 16,
-              fontWeight: 600,
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "var(--font-body)",
+              padding: "clamp(20px, 3vw, 28px) clamp(18px, 3vw, 24px)",
+              background: "var(--color-bg-warm)",
+              borderRadius: 12,
+              border: "1px solid var(--color-border-light)",
             }}
           >
-            Book Your Free Consultation
-            <ArrowRight size={16} aria-hidden="true" />
-          </button>
+            <h2 id="important-to-know" style={{ ...sectionHeadingStyle, marginBottom: 12 }}>
+              Important to know
+            </h2>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+              {NOT_INCLUDED.map((item) => (
+                <li key={item} style={{
+                  fontSize: 15,
+                  color: "var(--color-text-secondary)",
+                  lineHeight: 1.6,
+                }}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Bottom CTA */}
+          <div style={{ textAlign: "center", paddingTop: 4 }}>
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="sbr-consult-btn"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "14px 32px",
+                borderRadius: 8,
+                background: "var(--color-brand-green)",
+                color: "#FAF9F6",
+                fontSize: 16,
+                fontWeight: 600,
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Book Your Free Consultation
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
 const sectionHeadingStyle: React.CSSProperties = {
   fontFamily: "var(--font-display)",
-  fontSize: "clamp(1.3rem, 3vw, 1.6rem)",
+  fontSize: "clamp(1.2rem, 3vw, 1.5rem)",
   fontWeight: 400,
   color: "var(--color-text)",
-  marginBottom: 18,
+  marginBottom: 16,
 };
 
 const paragraphStyle: React.CSSProperties = {
@@ -274,6 +299,15 @@ const paragraphStyle: React.CSSProperties = {
   color: "var(--color-text-secondary)",
   lineHeight: 1.7,
   marginBottom: 12,
+};
+
+const listStyle: React.CSSProperties = {
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
 };
 
 const checkListItemStyle: React.CSSProperties = {
