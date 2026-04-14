@@ -9,8 +9,8 @@ export default function Hero() {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 12px;
-          margin-bottom: 32px;
+          gap: 14px;
+          margin-bottom: 36px;
         }
         .sbr-hero-ctas a {
           min-height: 48px;
@@ -31,71 +31,131 @@ export default function Hero() {
       <section
         aria-label="SmallBiz Recon — SBA EIDL servicing guidance"
         style={{
-          padding: "clamp(72px, 12vw, 140px) 20px clamp(56px, 10vw, 100px)",
+          padding: "clamp(80px, 14vw, 160px) 20px clamp(64px, 10vw, 120px)",
           background: "var(--color-bg)",
           position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Subtle decorative gradient orb */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "-20%",
+            right: "-10%",
+            width: "50%",
+            height: "80%",
+            background: "radial-gradient(ellipse at center, rgba(59, 74, 44, 0.03) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: "-10%",
+            left: "-10%",
+            width: "40%",
+            height: "60%",
+            background: "radial-gradient(ellipse at center, rgba(191, 155, 48, 0.03) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+
         <div style={{
-          maxWidth: 740,
+          maxWidth: 720,
           margin: "0 auto",
           textAlign: "center",
+          position: "relative",
         }}>
           {/* Eyebrow */}
-          <p style={{
-            fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-gold)",
-            marginBottom: 18,
-            fontFamily: "var(--font-body)",
-          }}>
-            SBA COVID EIDL Guidance
-          </p>
+          <div
+            className="animate-fade-in"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "6px 16px",
+              borderRadius: 20,
+              background: "rgba(191, 155, 48, 0.08)",
+              border: "1px solid rgba(191, 155, 48, 0.15)",
+              marginBottom: 24,
+            }}
+          >
+            <div style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "var(--color-gold)",
+            }} />
+            <span style={{
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--color-gold)",
+              fontFamily: "var(--font-body)",
+            }}>
+              SBA COVID EIDL Guidance
+            </span>
+          </div>
 
           {/* Headline */}
-          <h1 style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.9rem, 5.5vw, 3.25rem)",
-            fontWeight: 400,
-            color: "var(--color-text)",
-            lineHeight: 1.12,
-            letterSpacing: "-0.02em",
-            margin: "0 0 20px",
-          }}>
+          <h1
+            className="animate-fade-in"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 5.5vw, 3.4rem)",
+              fontWeight: 400,
+              color: "var(--color-text)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.025em",
+              margin: "0 0 22px",
+            }}
+          >
             Your SBA loan shouldn't feel{" "}
-            <span style={{ fontStyle: "italic", color: "var(--color-brand-green)" }}>
+            <span style={{
+              fontStyle: "italic",
+              color: "var(--color-brand-green)",
+              textDecoration: "underline",
+              textDecorationColor: "rgba(59, 74, 44, 0.15)",
+              textUnderlineOffset: "6px",
+              textDecorationThickness: "2px",
+            }}>
               impossible to navigate.
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p style={{
-            fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.7,
-            maxWidth: 560,
-            margin: "0 auto 36px",
-            fontFamily: "var(--font-body)",
-            padding: "0 4px",
-          }}>
+          <p
+            className="animate-fade-in"
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              color: "var(--color-text-secondary)",
+              lineHeight: 1.75,
+              maxWidth: 560,
+              margin: "0 auto 40px",
+              fontFamily: "var(--font-body)",
+              padding: "0 4px",
+            }}
+          >
             SmallBiz Recon helps small business owners understand and resolve SBA
             COVID EIDL servicing issues — from Treasury referrals and collections
             to disputes, recalls, and structured next steps.
           </p>
 
           {/* CTAs */}
-          <div className="sbr-hero-ctas">
+          <div className="sbr-hero-ctas animate-fade-in">
             <Link
               to="/case-evaluator"
+              className="sbr-btn-primary"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                padding: "14px 28px",
-                borderRadius: 8,
-                background: "var(--color-brand-green)",
+                padding: "14px 30px",
+                borderRadius: 10,
                 color: "#FAF9F6",
                 fontSize: 15,
                 fontWeight: 600,
@@ -109,14 +169,13 @@ export default function Hero() {
 
             <Link
               to="/consultation"
+              className="sbr-btn-secondary"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                padding: "14px 28px",
-                borderRadius: 8,
-                background: "transparent",
-                border: "1.5px solid var(--color-border)",
+                padding: "14px 30px",
+                borderRadius: 10,
                 color: "var(--color-text)",
                 fontSize: 15,
                 fontWeight: 600,
@@ -130,15 +189,25 @@ export default function Hero() {
           </div>
 
           {/* Trust strip */}
-          <p style={{
-            fontSize: 13,
-            color: "var(--color-text-muted)",
-            fontFamily: "var(--font-body)",
-            lineHeight: 1.6,
-            padding: "0 8px",
-          }}>
-            No login required · No cost to get started · Educational guidance, not legal advice
-          </p>
+          <div
+            className="animate-fade-in"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "6px 20px",
+              fontSize: 13,
+              color: "var(--color-text-muted)",
+              fontFamily: "var(--font-body)",
+              lineHeight: 1.6,
+            }}
+          >
+            <span>No login required</span>
+            <span style={{ color: "var(--color-border)" }}>·</span>
+            <span>No cost to get started</span>
+            <span style={{ color: "var(--color-border)" }}>·</span>
+            <span>Educational guidance, not legal advice</span>
+          </div>
         </div>
       </section>
     </>
