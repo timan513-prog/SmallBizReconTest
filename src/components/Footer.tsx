@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 type FooterProps = {
   setShowCookieConsent?: (show: boolean) => void;
@@ -10,26 +9,21 @@ export default function Footer({ setShowCookieConsent }: FooterProps) {
     <>
       <style>{`
         .sbr-footer-top {
-          display: grid;
-          grid-template-columns: 1.2fr 1fr auto;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
           gap: 32px 48px;
-          margin-bottom: 40px;
+          margin-bottom: 36px;
         }
         .sbr-footer-nav {
           display: flex;
           gap: 48px;
           flex-wrap: wrap;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
           .sbr-footer-top {
-            grid-template-columns: 1fr 1fr;
+            flex-direction: column;
             gap: 28px;
-          }
-        }
-        @media (max-width: 520px) {
-          .sbr-footer-top {
-            grid-template-columns: 1fr;
-            gap: 32px;
           }
           .sbr-footer-nav {
             gap: 32px;
@@ -47,10 +41,8 @@ export default function Footer({ setShowCookieConsent }: FooterProps) {
         }}
       >
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-          {/* Top row: brand + links + mini CTA */}
           <div className="sbr-footer-top">
-            {/* Brand */}
-            <div>
+            <div style={{ maxWidth: 300, minWidth: 200 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                 <img
                   src="/smallbizrecon_logo_transparent.png"
@@ -73,14 +65,12 @@ export default function Footer({ setShowCookieConsent }: FooterProps) {
                 color: "var(--color-text-muted)",
                 lineHeight: 1.7,
                 margin: 0,
-                maxWidth: 280,
               }}>
-                Educational guidance and structured help for small business owners
-                navigating SBA COVID EIDL servicing issues.
+                Straightforward help for small business owners navigating SBA
+                COVID EIDL loan problems.
               </p>
             </div>
 
-            {/* Links */}
             <nav aria-label="Footer navigation" className="sbr-footer-nav">
               <div>
                 <h3 style={{
@@ -137,45 +127,10 @@ export default function Footer({ setShowCookieConsent }: FooterProps) {
                 </ul>
               </div>
             </nav>
-
-            {/* Mini CTA */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <p style={{
-                fontSize: 14,
-                fontWeight: 600,
-                color: "var(--color-text)",
-                margin: 0,
-                lineHeight: 1.4,
-              }}>
-                Need help with your<br />EIDL situation?
-              </p>
-              <Link
-                to="/consultation"
-                className="sbr-btn-primary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  padding: "10px 18px",
-                  borderRadius: 8,
-                  color: "#FAF9F6",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  fontFamily: "var(--font-body)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Free Consultation
-                <ArrowRight size={13} aria-hidden="true" />
-              </Link>
-            </div>
           </div>
 
-          {/* Divider */}
           <div className="sbr-section-divider" style={{ maxWidth: "100%", marginBottom: 24 }} />
 
-          {/* Disclaimer + copyright */}
           <div style={{
             display: "flex",
             flexWrap: "wrap",

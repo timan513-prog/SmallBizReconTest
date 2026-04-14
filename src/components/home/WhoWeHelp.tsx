@@ -3,24 +3,21 @@ import { AlertTriangle, Scale, HelpCircle } from "lucide-react";
 const CARDS = [
   {
     icon: AlertTriangle,
-    title: "Sent to Treasury or Collections",
+    title: "Your loan went to Treasury",
     description:
-      "Your EIDL was referred to the Treasury Offset Program or a private collection agency — and you need to understand your options.",
-    accent: "var(--color-gold)",
+      "You got a letter saying your EIDL was referred to the Treasury Offset Program — or a collection agency called. You're wondering if you can stop it, reverse it, or negotiate.",
   },
   {
     icon: Scale,
-    title: "Disputes, Recalls & Credit Issues",
+    title: "Something's wrong on your credit",
     description:
-      "You're dealing with a credit bureau report, a recall situation, or need to dispute an action taken against your loan.",
-    accent: "var(--color-brand-green)",
+      "Your credit report shows a derogatory mark from the SBA you weren't expecting. Or you've been told to \"dispute it\" but don't know how or with whom.",
   },
   {
     icon: HelpCircle,
-    title: "Confused About Next Steps",
+    title: "You don't know what's happening",
     description:
-      "You received a notice, missed a payment, or aren't sure what's happening with your EIDL — and no one is giving you clear answers.",
-    accent: "var(--color-brand-green-light)",
+      "You got a confusing notice, missed a payment you didn't know about, or simply can't get a straight answer from the SBA. You just want someone to explain it clearly.",
   },
 ];
 
@@ -54,18 +51,7 @@ export default function WhoWeHelp() {
         }}
       >
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "clamp(40px, 6vw, 60px)" }}>
-            <p style={{
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--color-text-muted)",
-              marginBottom: 12,
-              fontFamily: "var(--font-body)",
-            }}>
-              Who this is for
-            </p>
+          <div style={{ textAlign: "center", marginBottom: "clamp(36px, 5vw, 52px)" }}>
             <h2
               id="who-we-help-heading"
               style={{
@@ -77,7 +63,7 @@ export default function WhoWeHelp() {
                 marginBottom: 14,
               }}
             >
-              We help small business owners like you
+              Does this sound like you?
             </h2>
             <p style={{
               fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
@@ -88,49 +74,31 @@ export default function WhoWeHelp() {
               fontFamily: "var(--font-body)",
               padding: "0 8px",
             }}>
-              Dealing with SBA COVID EIDL servicing issues you weren't prepared for?
-              You're not alone — and you have options.
+              Hundreds of small business owners have come to us with these
+              exact situations. You're not alone — and you have options.
             </p>
           </div>
 
           <div className="sbr-help-grid">
-            {CARDS.map((card, i) => {
+            {CARDS.map((card) => {
               const Icon = card.icon;
               return (
                 <article
                   key={card.title}
-                  className={`sbr-card sbr-stagger-${i + 1}`}
+                  className="sbr-card"
                   style={{
                     padding: "clamp(28px, 4vw, 36px) clamp(24px, 3vw, 32px)",
-                    position: "relative",
-                    overflow: "hidden",
                   }}
                 >
-                  {/* Top accent line */}
-                  <div
-                    aria-hidden="true"
+                  <Icon
+                    size={20}
                     style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: 3,
-                      background: card.accent,
-                      borderRadius: "12px 12px 0 0",
+                      color: "var(--color-brand-green)",
+                      marginBottom: 18,
+                      display: "block",
                     }}
+                    aria-hidden="true"
                   />
-                  <div style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: "rgba(59, 74, 44, 0.05)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 20,
-                  }}>
-                    <Icon size={22} style={{ color: "var(--color-brand-green)" }} aria-hidden="true" />
-                  </div>
                   <h3 style={{
                     fontFamily: "var(--font-body)",
                     fontSize: "clamp(1rem, 1.5vw, 1.1rem)",

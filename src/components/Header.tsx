@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const HEADER_HEIGHT = 64;
 
@@ -87,7 +87,6 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
         }}>
-          {/* Logo */}
           <Link
             to="/home"
             style={{
@@ -122,7 +121,6 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav
             aria-label="Primary navigation"
             className="sbr-desktop-nav"
@@ -152,14 +150,12 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <Link
             to="/consultation"
             className="sbr-desktop-cta sbr-btn-primary"
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 6,
               padding: "9px 20px",
               borderRadius: 8,
               fontSize: 14,
@@ -171,10 +167,8 @@ export default function Header() {
             }}
           >
             Free Consultation
-            <ArrowRight size={14} aria-hidden="true" />
           </Link>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="sbr-mobile-toggle"
@@ -198,7 +192,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile overlay */}
       {mobileOpen && (
         <div
           aria-hidden="true"
@@ -213,7 +206,6 @@ export default function Header() {
         />
       )}
 
-      {/* Mobile menu */}
       <nav
         role="navigation"
         aria-label="Mobile navigation"
@@ -253,7 +245,6 @@ export default function Header() {
                 textDecoration: "none",
                 borderBottom: "1px solid var(--color-border-light)",
                 minHeight: 52,
-                letterSpacing: "0.01em",
               }}
             >
               {link.label}
@@ -269,7 +260,6 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: 8,
               marginTop: 24,
               padding: "16px 24px",
               borderRadius: 10,
@@ -277,12 +267,10 @@ export default function Header() {
               fontSize: 16,
               fontWeight: 600,
               textDecoration: "none",
-              textAlign: "center",
               minHeight: 52,
             }}
           >
-            Free Consultation
-            <ArrowRight size={16} aria-hidden="true" />
+            Schedule a Free Call
           </Link>
         </div>
       </nav>

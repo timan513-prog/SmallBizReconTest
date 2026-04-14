@@ -32,7 +32,7 @@ function useCalendlyPopup() {
 const WHAT_WE_COVER = [
   "Review your current EIDL loan status and any notices you've received",
   "Explain what actions have been taken and what they mean",
-  "Outline your options and recommended next steps",
+  "Outline your options and what to do next",
   "Answer your questions about the process",
 ];
 
@@ -66,33 +66,15 @@ export default function PaidConsultation() {
       `}</style>
 
       <div style={{ background: "var(--color-bg)", fontFamily: "var(--font-body)" }}>
-        {/* Hero */}
         <section
           aria-labelledby="consultation-page-heading"
           style={{
             padding: "clamp(48px, 10vw, 100px) 20px clamp(48px, 8vw, 80px)",
             background: "var(--color-bg)",
             textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
           }}
         >
-          {/* Decorative bg */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              top: "-20%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "80%",
-              height: "100%",
-              background: "radial-gradient(ellipse at center, rgba(59, 74, 44, 0.02) 0%, transparent 60%)",
-              pointerEvents: "none",
-            }}
-          />
-
-          <div style={{ maxWidth: 640, margin: "0 auto", position: "relative" }}>
+          <div style={{ maxWidth: 640, margin: "0 auto" }}>
             <Link
               to="/home"
               className="sbr-footer-link"
@@ -111,23 +93,6 @@ export default function PaidConsultation() {
               Back to Home
             </Link>
 
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "5px 14px",
-              borderRadius: 20,
-              background: "rgba(59, 74, 44, 0.06)",
-              marginBottom: 20,
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--color-brand-green)",
-            }}>
-              No cost · No obligation
-            </div>
-
             <h1
               id="consultation-page-heading"
               style={{
@@ -140,7 +105,7 @@ export default function PaidConsultation() {
                 marginBottom: 16,
               }}
             >
-              Free Consultation
+              Let's figure out your EIDL situation — together.
             </h1>
 
             <p style={{
@@ -151,8 +116,8 @@ export default function PaidConsultation() {
               margin: "0 auto 36px",
               padding: "0 4px",
             }}>
-              A 30-minute introductory session to help you understand your SBA EIDL
-              situation, your options, and what to do next.
+              A free 30-minute call where we review your loan, explain what's
+              happened, and map out your next steps. No cost, no strings.
             </p>
 
             <button
@@ -171,7 +136,7 @@ export default function PaidConsultation() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              Book Your Free Session
+              Schedule My Free Call
               <ArrowRight size={16} aria-hidden="true" />
             </button>
 
@@ -193,10 +158,8 @@ export default function PaidConsultation() {
           </div>
         </section>
 
-        {/* Divider */}
         <div className="sbr-section-divider" />
 
-        {/* Content sections */}
         <div style={{
           maxWidth: 680,
           margin: "0 auto",
@@ -205,46 +168,31 @@ export default function PaidConsultation() {
           flexDirection: "column",
           gap: "clamp(44px, 6vw, 60px)",
         }}>
-          {/* What We Cover */}
           <section aria-labelledby="what-we-cover">
             <h2 id="what-we-cover" style={sectionHeadingStyle}>
-              What the consultation covers
+              What we'll cover on the call
             </h2>
             <ul style={listStyle}>
               {WHAT_WE_COVER.map((item) => (
                 <li key={item} style={checkListItemStyle}>
-                  <div style={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: 6,
-                    background: "rgba(59, 74, 44, 0.06)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    marginTop: 1,
-                  }}>
-                    <CheckCircle size={14} style={{ color: "var(--color-brand-green)" }} aria-hidden="true" />
-                  </div>
+                  <CheckCircle size={16} style={{ color: "var(--color-brand-green)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          {/* Who It's For */}
           <section aria-labelledby="who-its-for">
             <h2 id="who-its-for" style={sectionHeadingStyle}>
-              Who this is for
+              Is this right for you?
             </h2>
             <p style={paragraphStyle}>
-              This consultation is for small business owners who have an SBA COVID
-              EIDL loan and are experiencing servicing issues — whether you've been
-              sent to Treasury, placed in collections, received confusing notices,
-              or simply don't know what's happening with your loan.
+              If you have an EIDL loan and something's gone wrong — a Treasury
+              notice, a collections call, a credit hit, or just radio silence from
+              the SBA — this call is for you.
             </p>
             <p style={paragraphStyle}>
-              If you're unsure whether this applies to you, take our{" "}
+              If you're unsure, take our{" "}
               <Link to="/case-evaluator" style={{
                 color: "var(--color-brand-green)",
                 fontWeight: 600,
@@ -252,43 +200,33 @@ export default function PaidConsultation() {
                 textDecorationColor: "rgba(59, 74, 44, 0.3)",
                 textUnderlineOffset: "3px",
               }}>
-                short case evaluator quiz
+                2-minute situation check
               </Link>{" "}
-              first — it's free, takes 2 minutes, and will give you a clearer picture.
+              first — it's free and will give you a clearer picture.
             </p>
           </section>
 
-          {/* What to Prepare */}
           <section aria-labelledby="what-to-prepare">
             <h2 id="what-to-prepare" style={sectionHeadingStyle}>
               What to have ready
             </h2>
             <ul style={listStyle}>
-              {WHAT_TO_PREPARE.map((item, i) => (
+              {WHAT_TO_PREPARE.map((item) => (
                 <li key={item} style={checkListItemStyle}>
-                  <div style={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: 6,
-                    background: "rgba(191, 155, 48, 0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                  <span style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: "50%",
+                    background: "var(--color-gold)",
                     flexShrink: 0,
-                    marginTop: 1,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: "var(--color-gold)",
-                  }}>
-                    {i + 1}
-                  </div>
+                    marginTop: 8,
+                  }} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          {/* Important to Know */}
           <section
             aria-labelledby="important-to-know"
             style={{
@@ -316,7 +254,6 @@ export default function PaidConsultation() {
             </ul>
           </section>
 
-          {/* Bottom CTA */}
           <div style={{
             textAlign: "center",
             padding: "32px 24px",
@@ -331,7 +268,7 @@ export default function PaidConsultation() {
               marginBottom: 20,
               fontWeight: 400,
             }}>
-              Ready to talk through your situation?
+              You've read this far — you probably need this call.
             </p>
             <button
               type="button"
@@ -349,7 +286,7 @@ export default function PaidConsultation() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              Book Your Free Consultation
+              Schedule My Free Call
               <ArrowRight size={16} aria-hidden="true" />
             </button>
           </div>
@@ -387,7 +324,7 @@ const listStyle: React.CSSProperties = {
 const checkListItemStyle: React.CSSProperties = {
   display: "flex",
   alignItems: "flex-start",
-  gap: 14,
+  gap: 12,
   fontSize: 15,
   color: "var(--color-text-secondary)",
   lineHeight: 1.65,

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Clock, Shield } from "lucide-react";
 
 const DETAILS = [
-  { icon: Calendar, text: "30-minute introductory session" },
-  { icon: Clock, text: "Understand your situation and options" },
-  { icon: Shield, text: "No obligation, no pressure" },
+  { icon: Calendar, text: "30 minutes on Zoom or phone" },
+  { icon: Clock, text: "We explain your situation in plain language" },
+  { icon: Shield, text: "No contracts, no upsell" },
 ];
 
 export default function ConsultationSection() {
@@ -41,20 +41,7 @@ export default function ConsultationSection() {
       >
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
           <div className="sbr-consult-layout">
-            {/* Left — Copy */}
             <div>
-              <p style={{
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--color-text-muted)",
-                marginBottom: 14,
-                fontFamily: "var(--font-body)",
-              }}>
-                Free consultation
-              </p>
-
               <h2
                 id="consultation-heading"
                 style={{
@@ -80,9 +67,9 @@ export default function ConsultationSection() {
                 marginBottom: 28,
                 maxWidth: 480,
               }}>
-                Book a free consultation with our team. We'll walk through your EIDL
-                situation, explain what's happening, and outline clear next steps —
-                whether that means working with us or handling it on your own.
+                In 30 minutes, we'll review your loan situation, explain what the
+                SBA has done (and why), and give you a clear plan — even if you
+                decide to handle it yourself.
               </p>
 
               <Link
@@ -102,12 +89,11 @@ export default function ConsultationSection() {
                   minHeight: 48,
                 }}
               >
-                Book Your Free Consultation
+                Schedule a Free Call
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
 
-            {/* Right — Feature card */}
             <div style={{
               background: "var(--color-bg-card)",
               borderRadius: "var(--radius-md)",
@@ -115,18 +101,6 @@ export default function ConsultationSection() {
               padding: "clamp(28px, 4vw, 40px)",
               boxShadow: "var(--shadow-md)",
             }}>
-              <h3 style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 14,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "var(--color-text-muted)",
-                marginBottom: 24,
-              }}>
-                What to expect
-              </h3>
-
               <ul style={{
                 listStyle: "none",
                 padding: 0,
@@ -142,7 +116,7 @@ export default function ConsultationSection() {
                       key={item.text}
                       style={{
                         display: "flex",
-                        alignItems: "flex-start",
+                        alignItems: "center",
                         gap: 14,
                         fontSize: 15,
                         color: "var(--color-text-secondary)",
@@ -150,39 +124,16 @@ export default function ConsultationSection() {
                         lineHeight: 1.5,
                       }}
                     >
-                      <div style={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: 10,
-                        background: "rgba(59, 74, 44, 0.05)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                      }}>
-                        <Icon
-                          size={18}
-                          style={{ color: "var(--color-brand-green)" }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <span style={{ paddingTop: 9 }}>{item.text}</span>
+                      <Icon
+                        size={18}
+                        style={{ color: "var(--color-brand-green)", flexShrink: 0 }}
+                        aria-hidden="true"
+                      />
+                      {item.text}
                     </li>
                   );
                 })}
               </ul>
-
-              <div style={{
-                marginTop: 24,
-                paddingTop: 20,
-                borderTop: "1px solid var(--color-border-light)",
-                fontSize: 13,
-                color: "var(--color-text-muted)",
-                fontFamily: "var(--font-body)",
-                lineHeight: 1.6,
-              }}>
-                Video or phone call — your choice. We'll send you a confirmation with everything you need.
-              </div>
             </div>
           </div>
         </div>

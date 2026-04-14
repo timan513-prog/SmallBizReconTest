@@ -1,23 +1,15 @@
-import { BookOpen, FileCheck, Compass } from "lucide-react";
-
 const TRUST_POINTS = [
   {
-    icon: BookOpen,
-    title: "Educational Guidance",
-    description: "We explain SBA processes in plain language so you can make informed decisions about your loan.",
-    num: "01",
+    title: "We explain what's happening",
+    description: "SBA notices are confusing by design. We translate them into plain English so you know exactly where you stand.",
   },
   {
-    icon: FileCheck,
-    title: "Structured Help",
-    description: "We ensure the correct requests and documents are prepared and submitted on your behalf.",
-    num: "02",
+    title: "We handle the paperwork",
+    description: "Disputes, recalls, and payment requests all require specific forms submitted the right way. We prepare and file them for you.",
   },
   {
-    icon: Compass,
-    title: "Real Experience",
-    description: "Our guidance comes from direct, hands-on experience with SBA EIDL servicing — not theory.",
-    num: "03",
+    title: "We've seen your situation before",
+    description: "This isn't theoretical. We've handled EIDL cases across every stage — from first notice to resolution.",
   },
 ];
 
@@ -47,18 +39,7 @@ export default function TrustSection() {
         }}
       >
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "clamp(40px, 6vw, 56px)" }}>
-            <p style={{
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--color-text-muted)",
-              marginBottom: 12,
-              fontFamily: "var(--font-body)",
-            }}>
-              Our approach
-            </p>
+          <div style={{ textAlign: "center", marginBottom: "clamp(36px, 5vw, 52px)" }}>
             <h2
               id="trust-heading"
               style={{
@@ -70,7 +51,7 @@ export default function TrustSection() {
                 marginBottom: 14,
               }}
             >
-              What you can expect from us
+              How we help
             </h2>
 
             <p style={{
@@ -82,74 +63,41 @@ export default function TrustSection() {
               fontFamily: "var(--font-body)",
               padding: "0 8px",
             }}>
-              We don't offer legal advice and we're not your lawyer. Here's what we
-              do provide.
+              We've worked with hundreds of small business owners in the same
+              situation. Here's what we actually do.
             </p>
           </div>
 
           <div className="sbr-trust-grid">
-            {TRUST_POINTS.map((point) => {
-              const Icon = point.icon;
-              return (
-                <div
-                  key={point.title}
-                  style={{
-                    padding: "clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 28px)",
-                    background: "var(--color-bg-warm)",
-                    borderRadius: "var(--radius-md)",
-                    border: "1px solid var(--color-border-light)",
-                    position: "relative",
-                  }}
-                >
-                  {/* Number badge */}
-                  <span style={{
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: "var(--color-text-muted)",
-                    letterSpacing: "0.05em",
-                    fontFamily: "var(--font-body)",
-                    marginBottom: 16,
-                    display: "block",
-                    opacity: 0.5,
-                  }}>
-                    {point.num}
-                  </span>
-
-                  <div style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    background: "rgba(59, 74, 44, 0.06)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 18,
-                  }}>
-                    <Icon size={20} style={{ color: "var(--color-brand-green)" }} aria-hidden="true" />
-                  </div>
-
-                  <h3 style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 16,
-                    fontWeight: 600,
-                    color: "var(--color-text)",
-                    marginBottom: 10,
-                    lineHeight: 1.3,
-                  }}>
-                    {point.title}
-                  </h3>
-                  <p style={{
-                    fontSize: 15,
-                    color: "var(--color-text-secondary)",
-                    lineHeight: 1.7,
-                    fontFamily: "var(--font-body)",
-                    margin: 0,
-                  }}>
-                    {point.description}
-                  </p>
-                </div>
-              );
-            })}
+            {TRUST_POINTS.map((point) => (
+              <div
+                key={point.title}
+                style={{
+                  padding: "clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 24px)",
+                  borderTop: "2px solid var(--color-brand-green)",
+                }}
+              >
+                <h3 style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: "var(--color-text)",
+                  marginBottom: 10,
+                  lineHeight: 1.3,
+                }}>
+                  {point.title}
+                </h3>
+                <p style={{
+                  fontSize: 15,
+                  color: "var(--color-text-secondary)",
+                  lineHeight: 1.7,
+                  fontFamily: "var(--font-body)",
+                  margin: 0,
+                }}>
+                  {point.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
