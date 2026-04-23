@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 /* ── Homepage sections (eagerly loaded — critical path) ── */
 import Hero from "./components/Hero";
 import WhoWeHelp from "./components/home/WhoWeHelp";
+import OurMission from "./components/home/OurMission";
 import QuizTeaser from "./components/home/QuizTeaser";
 import ConsultationSection from "./components/home/ConsultationSection";
 import TrustSection from "./components/home/TrustSection";
@@ -180,6 +181,7 @@ export default function App() {
                 <>
                   <Hero />
                   <WhoWeHelp />
+                  <OurMission />
                   <QuizTeaser />
                   <ConsultationSection />
                   <TrustSection />
