@@ -79,6 +79,11 @@ const AdminCommentsModeration = lazy(() => import("./pages/admin/AdminCommentsMo
 const AdminReportsManager = lazy(() => import("./pages/admin/AdminReportsManager"));
 const AdminLoginPage = lazy(() => import("./pages/admin/AdminLoginPage"));
 
+/* ── Operation: IneedSomething (standalone, lazy) ── */
+const IneedSomethingHome = lazy(
+  () => import("./pages/ineedsomething/IneedSomethingHome"),
+);
+
 /* ── Loading fallback ── */
 function PageLoader() {
   return (
@@ -264,6 +269,9 @@ export default function App() {
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>
+
+          {/* ── Operation: IneedSomething (standalone homepage) ── */}
+          <Route path="/ineedsomething" element={<IneedSomethingHome />} />
 
           {/* ── Admin (outside AppShell, lazy) ── */}
           <Route path="/admin/login" element={<AdminLoginPage />} />
